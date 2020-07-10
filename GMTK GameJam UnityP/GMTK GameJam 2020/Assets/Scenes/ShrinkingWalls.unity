@@ -731,8 +731,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  bulletSpawnPoint: {fileID: 85558852}
-  waitTime: 0
-  bullet: {fileID: 8970310509458865390, guid: dfdd491a094665e4d9ff9c684b5a1181, type: 3}
-  timeToFire: 50
-  ableToFire: 1
