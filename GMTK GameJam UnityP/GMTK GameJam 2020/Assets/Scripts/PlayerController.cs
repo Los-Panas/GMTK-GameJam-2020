@@ -6,9 +6,19 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float movementSpeed;
 
+    [SerializeField] GameObject bulletSpawnPoint;
+    [SerializeField] float waitTime;
+    [SerializeField] GameObject bullet;
+    [SerializeField] int timeToFire;
+    private int toFireTrack = 0;
+    [SerializeField] bool ableToFire;
+
+    private Transform bulletSpawned;
+
     void Update()
     {
         RotationInput();
+        Shoot();
     }
 
     void FixedUpdate()
@@ -30,4 +40,21 @@ public class PlayerController : MonoBehaviour
             transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
         }
     }
+
+    void Shoot()
+    {
+        toFireTrack++;
+
+        if (toFireTrack == timeToFire && ableToFire)
+        {
+            toFireTrack = 0;
+            bulletSpawned = Instantiate(bullet.transform, bulletSpawnPoint.transform.position, Quaternion.identity);
+            bulletSpawned.rotation = bulletSpawnPoint.transform.rotation;
+        } else if (!ableToFire)
+        {
+            toFireTrack = 0;
+        }
+    }
+
+
 }
