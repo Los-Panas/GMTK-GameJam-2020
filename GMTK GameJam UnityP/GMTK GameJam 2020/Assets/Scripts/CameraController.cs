@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
         
     }
 
-    void Update()
+    void FixedUpdate()
     {
         MoveCamera();   
     }

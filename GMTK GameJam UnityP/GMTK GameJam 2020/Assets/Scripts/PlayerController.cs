@@ -8,17 +8,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        MovementInput();
         RotationInput();
     }
 
-    void MovementInput()
+    void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(horizontal, 0, vertical);
-        transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
+        transform.Translate(movement.normalized * movementSpeed * Time.deltaTime, Space.World);
     }
 
     void RotationInput()
