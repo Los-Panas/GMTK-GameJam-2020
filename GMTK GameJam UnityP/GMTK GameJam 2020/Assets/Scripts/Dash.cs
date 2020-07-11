@@ -19,15 +19,23 @@ public class Dash : MonoBehaviour
     private DashDirection dashDirection;
     public float dashDuration;
     public float dashTimer;
+    public float dashCooldown;
+    public float currentCooldown;
 
 
     void Start()
     {
         body = GetComponent<Rigidbody>();
         dashDirection = DashDirection.NoDirection;
+        currentCooldown = dashCooldown;
     }
 
-    void FixedUpdate()
+    private void Update()
+    {
+        DashFunc();
+    }
+
+    void DashFunc()
     {
         //body.velocity = Vector3.zero;
         if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && Input.GetKeyDown(KeyCode.LeftShift))
@@ -46,6 +54,7 @@ public class Dash : MonoBehaviour
         {
             dashDirection = DashDirection.Right;
         }
+
         if (dashDirection != DashDirection.NoDirection)
         {
             if (dashTimer >= dashDuration)
@@ -59,7 +68,6 @@ public class Dash : MonoBehaviour
                 dashTimer += Time.deltaTime;
                 if (dashDirection == DashDirection.Left)
                 {
-
                     body.velocity = Vector3.left * dashSpeed;
                 }
 
@@ -76,14 +84,7 @@ public class Dash : MonoBehaviour
                 {
                     body.velocity = -Vector3.forward * dashSpeed;
                 }
-
-
-
             }
-
-
-
         }
-
     }
 }
