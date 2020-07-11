@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
+    Vector3 movement;
+    float horizontal;
+    float vertical;
+
     [SerializeField] float movementSpeed;
     public GameObject bulletSpawnPoint;
     [SerializeField] float waitTime;
@@ -19,19 +23,46 @@ public class PlayerController : MonoBehaviour
     public float invulnerability_time = 2f;
     public Transform Bulletspawn;
 
+    public float dashCD;
+    public float currentDashCD;
+
+    Rigidbody body;
+    public float dashSpeed;
+
+    private void Start()
+    {
+        body = GetComponent<Rigidbody>();
+        currentDashCD = dashCD;
+    }
+
     void Update()
     {
+        GetMoveInput();
         RotationInput();
         Shoot();
+        ImprovedDashFunc();
+    }
+
+    void GetMoveInput()
+    {
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+        movement = new Vector3(horizontal, 0, vertical);
     }
 
     void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(horizontal, 0, vertical);
         transform.Translate(movement.normalized * movementSpeed * Time.deltaTime, Space.World);
+    }
+
+    void ImprovedDashFunc()
+    {
+        currentDashCD -= Time.deltaTime;
+        if (Input.GetKey(KeyCode.LeftShift) && currentDashCD <= 0)
+        {
+            currentDashCD = dashCD;
+            body.velocity = movement * dashSpeed;
+        }
     }
 
     void RotationInput()

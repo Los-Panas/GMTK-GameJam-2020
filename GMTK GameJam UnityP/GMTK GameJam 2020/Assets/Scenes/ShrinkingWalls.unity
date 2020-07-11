@@ -954,9 +954,18 @@ MonoBehaviour:
   movementSpeed: 5
   bulletSpawnPoint: {fileID: 0}
   waitTime: 0
-  bullet: {fileID: 0}
+  bulletmesh: {fileID: 0}
   timeToFire: 0
   ableToFire: 0
+  bulletSpeed: 0
+  health: 100
+  spawnTime: 0
+  invulnerability: 0
+  invulnerability_time: 2
+  Bulletspawn: {fileID: 0}
+  dashCD: 0
+  currentDashCD: 0
+  dashSpeed: 20
 --- !u!1 &1699461153
 GameObject:
   m_ObjectHideFlags: 0
