@@ -25,14 +25,18 @@ public class PlayerController : MonoBehaviour
 
     public float dashCD;
     public float currentDashCD;
+    public float dashDuration;
+    public float dashSpeed;
+    public float dashTimer;
+    private bool dashDirection;
 
     Rigidbody body;
-    public float dashSpeed;
 
     private void Start()
     {
         body = GetComponent<Rigidbody>();
         currentDashCD = dashCD;
+        dashDirection = false;
     }
 
     void Update()
@@ -40,7 +44,6 @@ public class PlayerController : MonoBehaviour
         GetMoveInput();
         RotationInput();
         Shoot();
-        ImprovedDashFunc();
     }
 
     void GetMoveInput()
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         transform.Translate(movement.normalized * movementSpeed * Time.deltaTime, Space.World);
+        ImprovedDashFunc();
     }
 
     void ImprovedDashFunc()
@@ -60,8 +64,23 @@ public class PlayerController : MonoBehaviour
         currentDashCD -= Time.deltaTime;
         if (Input.GetKey(KeyCode.LeftShift) && currentDashCD <= 0)
         {
-            currentDashCD = dashCD;
-            body.velocity = movement * dashSpeed;
+            dashDirection = true;
+        }
+
+        if (dashDirection != false)
+        {
+            if (dashTimer >= dashDuration)
+            {
+                dashDirection = false;
+                dashTimer = 0;
+                body.velocity = Vector3.zero;
+            }
+            else
+            {
+                dashTimer += Time.deltaTime;
+                currentDashCD = dashCD;
+                body.velocity = movement.normalized * dashSpeed;
+            }
         }
     }
 

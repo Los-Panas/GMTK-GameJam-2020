@@ -19,18 +19,16 @@ public class Dash : MonoBehaviour
     private DashDirection dashDirection;
     public float dashDuration;
     public float dashTimer;
-    public float dashCooldown;
-    public float currentCooldown;
+
 
 
     void Start()
     {
         body = GetComponent<Rigidbody>();
         dashDirection = DashDirection.NoDirection;
-        currentCooldown = dashCooldown;
     }
 
-    private void Update()
+    void FixedUpdate()
     {
         DashFunc();
     }
