@@ -9,27 +9,19 @@ public class RoomManager : MonoBehaviour
     public Transform TeleportGoal;
 
     public int enemySpawns = 0;
-
-    private int enemy = 0;
-
     // Start is called before the first frame update
     void Start()
     {
         PlayerTransform = GameObject.Find("Player").transform;
-        enemy = enemySpawns;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (enemy.isdeleted)
-        // {
-        //      enemy = enemy - 1;
-        // }
-
-        if (enemy <= 0)
+        if (Input.GetKeyDown(KeyCode.O)) //if no enemy of that spawner is alive
         {
             PlayerTransform.position = TeleportGoal.position;
+            //activate next spawner, could be an array of spawners
         }
     }
 }
