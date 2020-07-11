@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject bulletmesh;
     public int timeToFire;
     private int toFireTrack = 0;
-    public bool ableToFire;
+    public bool ableToFire = true;
     [SerializeField] float bulletSpeed;
     [SerializeField] int minNumOfShots;
     [SerializeField] int maxNumfShots;
