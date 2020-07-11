@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject bulletmesh;
     public int timeToFire;
     private int toFireTrack = 0;
-    [SerializeField] bool ableToFire;
+    public bool ableToFire;
     [SerializeField] float bulletSpeed;
     private GameObject clone;
     public float health = 100f;
