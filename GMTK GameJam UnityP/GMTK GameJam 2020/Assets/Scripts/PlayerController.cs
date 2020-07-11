@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private int toFireTrack = 0;
     [SerializeField] bool ableToFire;
     [SerializeField] float bulletSpeed;
+    [SerializeField] int minNumOfShots;
+    [SerializeField] int maxNumfShots;
     private GameObject clone;
     public float health = 100f;
     public int spawnTime;
@@ -113,8 +115,11 @@ public class PlayerController : MonoBehaviour
 
     void Spawn()
     {
-        clone = Instantiate(bulletmesh, Bulletspawn.position, Bulletspawn.rotation);
-        clone.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
+        for (int i = 0; i <= Random.Range(minNumOfShots, maxNumfShots); i++)
+        {
+            clone = Instantiate(bulletmesh, Bulletspawn.position, Bulletspawn.rotation);
+            clone.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
+        }       
     }
 
     private void OnCollisionEnter(Collision collision)
