@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
     void Spawn()
     {
-        clone = Instantiate (bulletmesh, Bulletspawn.position, Bulletspawn.rotation);
+        clone = Instantiate(bulletmesh, Bulletspawn.position, Bulletspawn.rotation);
         clone.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
     }
 
