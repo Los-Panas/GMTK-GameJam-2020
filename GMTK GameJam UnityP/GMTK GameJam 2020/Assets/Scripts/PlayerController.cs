@@ -5,15 +5,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float movementSpeed;
-
-    [SerializeField] GameObject bulletSpawnPoint;
+    public GameObject bulletSpawnPoint;
     [SerializeField] float waitTime;
-    [SerializeField] GameObject bullet;
-    [SerializeField] int timeToFire;
+    //[SerializeField] GameObject bullet;
+    [SerializeField] GameObject bulletmesh;
+    public int timeToFire;
     private int toFireTrack = 0;
     [SerializeField] bool ableToFire;
+    [SerializeField] float bulletSpeed;
+    private GameObject clone;
 
-    private Transform bulletSpawned;
+    public int spawnTime;
+
+    public Transform Bulletspawn;
 
     void Update()
     {
@@ -49,13 +53,21 @@ public class PlayerController : MonoBehaviour
         if (toFireTrack == timeToFire && ableToFire)
         {
             toFireTrack = 0;
-            bulletSpawned = Instantiate(bullet.transform, bulletSpawnPoint.transform.position, Quaternion.identity);
-            bulletSpawned.rotation = bulletSpawnPoint.transform.rotation;
+            InvokeRepeating ("Spawn", spawnTime, spawnTime);
+            //bulletSpawned = Instantiate(bullet.transform, bulletSpawnPoint.transform.position, Quaternion.identity);
+            //bulletSpawned.rotation = bulletSpawnPoint.transform.rotation;
         } else if (!ableToFire)
         {
             toFireTrack = 0;
         }
     }
 
+    void Spawn()
+    {
+
+        //transform.Translate(Vector3.forward * Time.deltaTime * bulletSpeed);
+        clone = Instantiate (bulletmesh, Bulletspawn.position, Bulletspawn.rotation);
+        clone.GetComponent<Rigidbody>().AddForce(0 , 0, bulletSpeed * Time.deltaTime * bulletSpeed, ForceMode.Impulse);
+    }
 
 }
