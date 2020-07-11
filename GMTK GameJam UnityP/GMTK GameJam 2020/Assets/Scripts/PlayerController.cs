@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
     private GameObject clone;
     public float health = 100f;
     public int spawnTime;
-
+    public bool invulnerability = false;
+    public float invulnerability_time = 2f;
     public Transform Bulletspawn;
 
     void Update()
@@ -70,7 +71,12 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {
-            health -= 10f; //SHOULD HAVE A BULLET DAMAGE FOR NOW IS HARDCODED
+            if (!invulnerability)
+            {
+                health -= 10f; //SHOULD HAVE A BULLET DAMAGE FOR NOW IS HARDCODED
+                invulnerability = true;
+                StartCoroutine(ImmuneTime(Time.realtimeSinceStartup));
+            }
             Destroy(collision.gameObject);
         }
         
@@ -79,5 +85,13 @@ public class PlayerController : MonoBehaviour
             Scene curr_scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(curr_scene.name); // I dont know if we need to save some values or not but if we needed to we should store them somewhere before the reload.
         }
+    }
+    IEnumerator ImmuneTime(float time)
+    {
+        while ((Time.realtimeSinceStartup - time) < invulnerability_time)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        invulnerability = false;
     }
 }
