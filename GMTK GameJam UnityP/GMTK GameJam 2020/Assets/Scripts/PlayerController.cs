@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float movementSpeed;
     public GameObject bulletSpawnPoint;
     [SerializeField] float waitTime;
-    //[SerializeField] GameObject bullet;
     [SerializeField] GameObject bulletmesh;
     public int timeToFire;
     private int toFireTrack = 0;
@@ -63,10 +62,8 @@ public class PlayerController : MonoBehaviour
 
     void Spawn()
     {
-
-        //transform.Translate(Vector3.forward * Time.deltaTime * bulletSpeed);
         clone = Instantiate (bulletmesh, Bulletspawn.position, Bulletspawn.rotation);
-        clone.GetComponent<Rigidbody>().AddForce(0 , 0, bulletSpeed * Time.deltaTime * bulletSpeed, ForceMode.Impulse);
+        clone.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
     }
 
 }
