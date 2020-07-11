@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public float dashTimer;
     private bool dashDirection;
 
+    TrailRenderer trailRenderer;
+
     Rigidbody body;
 
     private void Start()
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody>();
         currentDashCD = dashCD;
         dashDirection = false;
+        trailRenderer = GetComponent<TrailRenderer>();
     }
 
     void Update()
@@ -79,11 +82,20 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                StartCoroutine(trailToggle());
                 dashTimer += Time.deltaTime;
                 currentDashCD = dashCD;
                 body.velocity = movement.normalized * dashSpeed;
             }
         }
+
+    }
+
+    IEnumerator trailToggle()
+    {
+        trailRenderer.enabled = true;
+        yield return new WaitForSeconds(dashDuration);
+        trailRenderer.enabled = false;
     }
 
     void RotationInput()
