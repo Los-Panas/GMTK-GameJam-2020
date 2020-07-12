@@ -80,7 +80,7 @@ public class RoomManager : MonoBehaviour
             playerController.HealthToMax();
         }
 
-        GameObject.Find("ScoreText").GetComponent<Text>().text = "Points:" + points.ToString();
+        GameObject.Find("ScoreText").GetComponent<Text>().text = "Points: " + points.ToString();
 
         StartCoroutine(PointIncrementOverTime());
 
