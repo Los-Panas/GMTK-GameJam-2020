@@ -80,7 +80,7 @@ public class RoomManager : MonoBehaviour
 
             playerPos.position = new Vector3(0, 1.5f, 0);
 
-            TotalPoints += points + maxPoints;
+            TotalPoints = TotalPoints + points;
 
             points = 0;
 
@@ -91,7 +91,7 @@ public class RoomManager : MonoBehaviour
 
         StartCoroutine(PointIncrementOverTime());
 
-        GameObject.Find("BarrierScoreText").GetComponent<Text>().text = "Points for next Room: " + maxPoints.ToString();
+        GameObject.Find("BarrierScoreText").GetComponent<Text>().text = "TP Points: " + maxPoints.ToString();
         GameObject.Find("TotalScore").GetComponent<Text>().text = "Total Score: " + TotalPoints.ToString();
     }
 
