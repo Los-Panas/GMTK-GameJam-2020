@@ -5562,7 +5562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Dash
-    clip_: {fileID: 8300000, guid: 18b241c5255d22f42907de7a4a4dd3b7, type: 3}
+    clip_: {fileID: 8300000, guid: ade055248d0640042813c9db490a787b, type: 3}
     volume_: 0.432
     pitch_: 1
     loop_: 0
@@ -5648,6 +5648,12 @@ MonoBehaviour:
   - name: Shot
     clip_: {fileID: 8300000, guid: 9c2d88bdc7284e4409e6c5576fbb7b37, type: 3}
     volume_: 0.053
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Coin
+    clip_: {fileID: 8300000, guid: 18b241c5255d22f42907de7a4a4dd3b7, type: 3}
+    volume_: 0.475
     pitch_: 1
     loop_: 0
     source: {fileID: 0}

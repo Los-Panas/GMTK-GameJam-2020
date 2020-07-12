@@ -178,6 +178,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PickUp"))
         {
+            FindObjectOfType<AudioManager>().Play("Coin");
+
             Destroy(other.gameObject);
 
             rmAddPoints.AddPoints();
