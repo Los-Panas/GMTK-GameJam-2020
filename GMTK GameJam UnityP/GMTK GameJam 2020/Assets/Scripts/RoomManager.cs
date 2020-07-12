@@ -38,19 +38,25 @@ public class RoomManager : MonoBehaviour
         {
             children[actualChild].gameObject.SetActive(false);
             children[actualChild + 1].gameObject.SetActive(false);
-            if(actualChild + 3 <= children.Length)
+            children[actualChild + 1].GetComponent<RandomPointOnMesh>().callOnce = false;
+
+            if (actualChild + 3 <= children.Length)
             {
                 FindObjectOfType<AudioManager>().Play("Nextlevel");
                 children[actualChild + 2].gameObject.SetActive(true);
                 children[actualChild + 3].gameObject.SetActive(true);
+                children[actualChild + 3].GetComponent<RandomPointOnMesh>().callOnce = false;
+                actualChild = actualChild + 2;
             }
             else
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                actualChild = 1;
+                children[actualChild].gameObject.SetActive(true);
+                children[actualChild + 1].gameObject.SetActive(true);
+                children[actualChild + 1].GetComponent<RandomPointOnMesh>().callOnce = false;
             }
 
-            actualChild = actualChild + 2;
-
+            
             var clones = GameObject.FindGameObjectsWithTag("Bullet");
             foreach (var clone in clones)
             {
