@@ -15,6 +15,7 @@ public class RandomPointOnMesh : MonoBehaviour
 
     RoomManager roomManager;
 
+    public bool callOnce = false;
 
     private void Start()
     {
@@ -24,9 +25,15 @@ public class RandomPointOnMesh : MonoBehaviour
         bangGetPoint = true;
     }
 
+    
     void Update()
     {
 
+        if(callOnce == false)
+        {
+            bangGetPoint = true;
+            callOnce = true;
+        }
 
         if (bangGetPoint)
         {
@@ -59,20 +66,8 @@ public class RandomPointOnMesh : MonoBehaviour
 
             bangGetPoint = false;
 
-
-            //debugPoints.Add(randomPoint);
-            //Debug.Log(randomPoint);
         }
     }
-
-    //public void OnDrawGizmos()
-    //{
-    //    foreach (Vector3 debugPoint in debugPoints)
-    //    {
-    //        Gizmos.DrawSphere(debugPoint, 1f);
-    //    }
-    //}
-
 
     Vector3 GetRandomPointOnMesh(Mesh mesh)
     {

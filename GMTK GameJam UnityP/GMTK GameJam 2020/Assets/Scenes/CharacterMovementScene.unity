@@ -5796,6 +5796,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178916261139467040, guid: 6c61b33b75b861d4bb326fcbfe001e96,
+        type: 3}
+      propertyPath: bangGetPoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6190326730206969207, guid: 6c61b33b75b861d4bb326fcbfe001e96,
         type: 3}
       propertyPath: m_IsActive
