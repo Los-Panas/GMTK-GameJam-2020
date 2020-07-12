@@ -42,6 +42,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         //Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        GameObject.Find("Walls").GetComponent<RoomManager>().pointIncrement = true;
     }
 
     public void Pause()
@@ -52,6 +53,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
         //Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        GameObject.Find("Walls").GetComponent<RoomManager>().pointIncrement = false;
     }
 
     public void QuitGame()
