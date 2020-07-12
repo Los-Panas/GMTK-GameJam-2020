@@ -13,9 +13,13 @@ public class RandomPointOnMesh : MonoBehaviour
 
     GameObject sphere;
 
+    RoomManager roomManager;
+
     private void Start()
     {
         lookupCollider = GetComponent<MeshCollider>();
+        GameObject Walls = GameObject.Find("Walls");
+        roomManager = Walls.GetComponent<RoomManager>();
     }
 
     void Update()
@@ -34,8 +38,21 @@ public class RandomPointOnMesh : MonoBehaviour
             WallRotate wrScript = sphere.AddComponent<WallRotate>();
             wrScript.ySpeed = -10.0f;
             sphere.GetComponent<Collider>().isTrigger = true;
-            Material newMat = Resources.Load("Collectable", typeof(Material)) as Material;
-            sphere.GetComponent<Renderer>().material = newMat;
+
+            if(roomManager.points == roomManager.maxPoints - 50)
+            {
+                Material newMat = Resources.Load("Collectable", typeof(Material)) as Material;
+                sphere.GetComponent<Renderer>().material = newMat;
+                Color color = new Color(0, 0, 1, 1);
+                sphere.GetComponent<Renderer>().material.SetColor("_EmissionColor", color);
+
+            }
+            else
+            {
+                Material newMat = Resources.Load("Collectable", typeof(Material)) as Material;
+                sphere.GetComponent<Renderer>().material = newMat;
+            }
+            
 
             bangGetPoint = false;
 
