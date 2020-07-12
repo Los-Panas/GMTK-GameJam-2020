@@ -163,7 +163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85558852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0.25, z: 1.25}
+  m_LocalPosition: {x: -0.005, y: 0.25, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1618039833}
@@ -6006,7 +6006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400429702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0.25, z: 0.75}
+  m_LocalPosition: {x: -0.004999995, y: 0.25, z: 1.096}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.7}
   m_Children: []
   m_Father: {fileID: 1618039833}
@@ -6223,7 +6223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 318.5, y: -45.7}
+  m_AnchoredPosition: {x: 318.5, y: -45.700012}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1426964643
@@ -8231,6 +8231,7 @@ MonoBehaviour:
   maxPoints: 150
   spherePoints: 50
   maxPointsIncrease: 250
+  TotalPoints: 0
   playerController: {fileID: 0}
 --- !u!1 &1151427224699952078
 GameObject:
