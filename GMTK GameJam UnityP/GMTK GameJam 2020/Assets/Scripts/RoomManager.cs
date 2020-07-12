@@ -29,6 +29,7 @@ public class RoomManager : MonoBehaviour
         playerPos = Player.GetComponent<Transform>();
         GameObject Teleport = GameObject.Find("Teleport");
         teleport = Teleport.GetComponent<Teleport>();
+        TotalPoints = 0;
     }
 
     // Update is called once per frame
