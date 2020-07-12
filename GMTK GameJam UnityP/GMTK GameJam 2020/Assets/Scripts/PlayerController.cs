@@ -49,6 +49,9 @@ public class PlayerController : MonoBehaviour
 
     public ParticleSystem particleSys;
 
+    public Material regularMaterial;
+    public Material invincibleMaterial;
+
     private void Start()
     {
         body = GetComponent<Rigidbody>();
@@ -85,6 +88,7 @@ public class PlayerController : MonoBehaviour
         RotationInput();
         Shoot();
         healthBarHandler.SetHealth(currentHealth);
+        InvulnerabilityVisual();
     }
 
     void GetMoveInput()
@@ -103,10 +107,9 @@ public class PlayerController : MonoBehaviour
     void ImprovedDashFunc()
     {
         currentDashCD -= Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.LeftShift) && currentDashCD <= 0)
+        if (Input.GetKey(KeyCode.LeftShift) && currentDashCD <= 0)
         {
             dashDirection = true;
-            FindObjectOfType<AudioManager>().Play("Dash");
         }
 
         if (dashDirection != false)
@@ -167,8 +170,10 @@ public class PlayerController : MonoBehaviour
         {
             clone = Instantiate(bulletmesh, Bulletspawn.position, Bulletspawn.rotation);
             clone.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
-            particleSys.Emit(30);
         }
+        particleSys.Emit(30);
+        FindObjectOfType<AudioManager>().Play("Shot");
+
 
     }
 
@@ -176,6 +181,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PickUp"))
         {
+            FindObjectOfType<AudioManager>().Play("Coin");
+
             Destroy(other.gameObject);
 
             rmAddPoints.AddPoints();
@@ -241,6 +248,7 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {
+            FindObjectOfType<AudioManager>().Play("Gethit");
             if (!invulnerability)
             {
                 currentHealth -= 10; //SHOULD HAVE A BULLET DAMAGE FOR NOW IS HARDCODED
@@ -253,14 +261,24 @@ public class PlayerController : MonoBehaviour
         if(currentHealth <= 0) 
         {
             Scene curr_scene = SceneManager.GetActiveScene();
-            FindObjectOfType<AudioManager>().Play("Restart");
             SceneManager.LoadScene(curr_scene.name); // I dont know if we need to save some values or not but if we needed to we should store them somewhere before the reload.
+        }
+    }
+
+    public void InvulnerabilityVisual()
+    {
+        if (invulnerability)
+        {
+            GetComponent<MeshRenderer>().material = invincibleMaterial;
+        }
+        else
+        {
+            GetComponent<MeshRenderer>().material = regularMaterial;
         }
     }
 
     public void HealthToMax()
     {
-        Debug.Log("Healed");
         currentHealth = maxHealth;
     }
 

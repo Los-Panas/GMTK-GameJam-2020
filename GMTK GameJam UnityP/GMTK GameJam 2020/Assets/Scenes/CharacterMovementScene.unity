@@ -5562,7 +5562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Dash
-    clip_: {fileID: 8300000, guid: 18b241c5255d22f42907de7a4a4dd3b7, type: 3}
+    clip_: {fileID: 8300000, guid: ade055248d0640042813c9db490a787b, type: 3}
     volume_: 0.432
     pitch_: 1
     loop_: 0
@@ -5642,6 +5642,24 @@ MonoBehaviour:
   - name: Nextlevel
     clip_: {fileID: 8300000, guid: 9d32f13839c603040813db5cb99bae4c, type: 3}
     volume_: 0.786
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Shot
+    clip_: {fileID: 8300000, guid: 9c2d88bdc7284e4409e6c5576fbb7b37, type: 3}
+    volume_: 0.053
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Coin
+    clip_: {fileID: 8300000, guid: 18b241c5255d22f42907de7a4a4dd3b7, type: 3}
+    volume_: 0.475
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Gethit
+    clip_: {fileID: 8300000, guid: 11d9f5e0037e0a54eb225520a776449e, type: 3}
+    volume_: 0.364
     pitch_: 1
     loop_: 0
     source: {fileID: 0}
@@ -6215,6 +6233,8 @@ MonoBehaviour:
   dashTimer: 0
   healthBarHandler: {fileID: 1982187078}
   particleSys: {fileID: 85558855}
+  regularMaterial: {fileID: 2100000, guid: f229fdf0cc937b045beb05f45fe78b64, type: 2}
+  invincibleMaterial: {fileID: 2100000, guid: 656965b86a8c19c49bb0c47fbf6ce4d7, type: 2}
 --- !u!54 &1618039835
 Rigidbody:
   m_ObjectHideFlags: 0
