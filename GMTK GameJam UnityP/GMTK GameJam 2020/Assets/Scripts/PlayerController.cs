@@ -276,8 +276,6 @@ public class PlayerController : MonoBehaviour
                 maxNumfShots = 2;
                 minNumOfShots = 3;
                 bulletSpeed = 600;
-                
-
             }
         }
     }

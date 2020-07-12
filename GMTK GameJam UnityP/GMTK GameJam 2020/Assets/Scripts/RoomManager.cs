@@ -35,6 +35,12 @@ public class RoomManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var clones2 = GameObject.FindGameObjectsWithTag("Bullet");
+        if (clones2.Length > 100)
+        {
+            Destroy(clones2[0]);
+        }
+
         if (points >= maxPoints && children[actualChild] != null && teleport.inTeleport == true) //if points are 
         {
             children[actualChild].gameObject.SetActive(false);
