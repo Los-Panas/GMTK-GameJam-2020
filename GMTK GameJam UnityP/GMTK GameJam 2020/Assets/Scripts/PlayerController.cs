@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     private RandomPointOnMesh star0021;
     private RandomPointOnMesh rectangle0021;
 
+    public ParticleSystem particleSys;
+
     private void Start()
     {
         body = GetComponent<Rigidbody>();
@@ -150,6 +152,7 @@ public class PlayerController : MonoBehaviour
         {
             clone = Instantiate(bulletmesh, Bulletspawn.position, Bulletspawn.rotation);
             clone.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
+            particleSys.Emit(20);
         }       
     }
 
