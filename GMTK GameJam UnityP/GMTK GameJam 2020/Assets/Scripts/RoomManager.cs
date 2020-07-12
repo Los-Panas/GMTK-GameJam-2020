@@ -1,26 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoomManager : MonoBehaviour
 {
-    private Transform PlayerTransform;
-
-    public Transform TeleportGoal;
+    int actualChild = 1;
+    Transform[] children;
+    public int points;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerTransform = GameObject.Find("Player").transform;
+        children = GetComponentsInChildren<Transform>(true);
+        points = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O)) //if no enemy of that spawner is alive
+        if (points >= 100 && children[actualChild] != null) //if points are 
         {
-            PlayerTransform.position = TeleportGoal.position;
-            //activate next spawner, could be an array of spawners
+            children[actualChild].gameObject.SetActive(false);
+            children[actualChild + 1].gameObject.SetActive(false);
+            children[actualChild + 2].gameObject.SetActive(true);
+            children[actualChild + 3].gameObject.SetActive(true);
+            actualChild = actualChild + 2;
+            //TODO: borrar balas en la escena
+            points = 0;
         }
+
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            AddPoints();
+        }
+
+        if(actualChild > children.Length)
+        {
+            //GO TO WIN MENU
+        }
+    }
+
+    public void AddPoints()
+    {
+        points = points + 50;
     }
 }

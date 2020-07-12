@@ -6,12 +6,10 @@ public class WallRotate : MonoBehaviour
 {
     public float ySpeed = 10.0f;
 
-    public GameObject go;
-
     // Update is called once per frame
     void Update()
     {
-        transform.RotateAround(go.transform.position, Vector3.up, ySpeed * Time.deltaTime);
+        transform.RotateAround(Vector3.zero, Vector3.up, ySpeed * Time.deltaTime);
 
     }
 }
