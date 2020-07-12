@@ -6,7 +6,7 @@ public class Teleport : MonoBehaviour
 {
     public bool inTeleport = false;
     private RoomManager roomManager;
-
+    bool play_tp_enable = true;
     void Start()
     {
         GameObject Walls = GameObject.Find("Walls");
@@ -18,10 +18,18 @@ public class Teleport : MonoBehaviour
         if(roomManager.points >= roomManager.maxPoints)
         {
             gameObject.GetComponent<Renderer>().enabled = true;
+
+            if(play_tp_enable)
+            {
+                FindObjectOfType<AudioManager>().Play("TpEnable");
+                play_tp_enable = false;
+            }
+            
         }
         else
         {
             gameObject.GetComponent<Renderer>().enabled = false;
+            play_tp_enable = true;
         }
     }
 
