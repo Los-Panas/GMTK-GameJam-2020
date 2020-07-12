@@ -5884,7 +5884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.18516374, g: 0.6886792, b: 0.6335395, a: 1}
+  m_Color: {r: 0.6226415, g: 0, b: 0.21946092, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6270,7 +6270,7 @@ MonoBehaviour:
   bulletSpeed: 400
   minNumOfShots: 0
   maxNumfShots: 0
-  maxHealth: 100
+  maxHealth: 50
   currentHealth: 0
   spawnTime: 0
   invulnerability: 0

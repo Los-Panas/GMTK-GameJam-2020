@@ -232,6 +232,7 @@ public class PlayerController : MonoBehaviour
                     pentagon002.bangGetPoint = true;
                     count = 0;
                 }
+                maxNumfShots = 1;
                 //Debug.Log("sphere2 true");
             }
             if (pentagon002.gameObject.activeInHierarchy == true)
@@ -247,6 +248,8 @@ public class PlayerController : MonoBehaviour
                     hexagon002.bangGetPoint = true;
                     count = 0;
                 }
+                maxNumfShots = 2;
+                minNumOfShots = 2;
             }
             if (hexagon002.gameObject.activeInHierarchy == true)
             {
@@ -261,11 +264,17 @@ public class PlayerController : MonoBehaviour
                     count = 0;
                 }
                 //Debug.Log("sphere4 true");
+               
             }
             if (heptagon002.gameObject.activeInHierarchy == true)
             {
                 heptagon002.bangGetPoint = true;
                 //Debug.Log("sphere5 true");
+                maxNumfShots = 4;
+                minNumOfShots = 4;
+                bulletSpeed = 200;
+                
+
             }
         }
     }
