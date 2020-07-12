@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RandomPointOnMesh : MonoBehaviour
 {
@@ -16,20 +17,21 @@ public class RandomPointOnMesh : MonoBehaviour
     RoomManager roomManager;
 
     public bool callOnce = false;
-
+    Scene scene;
     private void Start()
     {
         lookupCollider = GetComponent<MeshCollider>();
         GameObject Walls = GameObject.Find("Walls");
         roomManager = Walls.GetComponent<RoomManager>();
         bangGetPoint = true;
+
+        scene = SceneManager.GetActiveScene();
     }
 
     
     void Update()
     {
-
-        if(callOnce == false)
+        if (callOnce == false)
         {
             bangGetPoint = true;
             callOnce = true;
