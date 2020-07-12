@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0594f351efc6cdd4999cac69d540ff14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bangGetPoint: 0
+  bangGetPoint: 1
   debugPoints: []
 --- !u!1 &6190326730206969207
 GameObject:
