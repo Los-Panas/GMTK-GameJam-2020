@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
     {
         GetMoveInput();
         RotationInput();
-        Shoot();
+        Shoot();       
     }
 
     void GetMoveInput()
@@ -97,9 +97,10 @@ public class PlayerController : MonoBehaviour
     void ImprovedDashFunc()
     {
         currentDashCD -= Time.deltaTime;
-        if (Input.GetKey(KeyCode.LeftShift) && currentDashCD <= 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && currentDashCD <= 0)
         {
             dashDirection = true;
+            FindObjectOfType<AudioManager>().Play("Dash");
         }
 
         if (dashDirection != false)
@@ -218,6 +219,7 @@ public class PlayerController : MonoBehaviour
         if(health <= 0) 
         {
             Scene curr_scene = SceneManager.GetActiveScene();
+            FindObjectOfType<AudioManager>().Play("Restart");
             SceneManager.LoadScene(curr_scene.name); // I dont know if we need to save some values or not but if we needed to we should store them somewhere before the reload.
         }
     }

@@ -6,80 +6,60 @@ using UnityEngine;
 public class DynamicAudio : MonoBehaviour
 {
 
-    enum GameplayAudio1 { GAMEPLAY1_1, GAMEPLAY1_2, GAMEPLAY1_3, NONE} 
-    enum GameplayAudio2 { GAMEPLAY2_1, GAMEPLAY2_2, GAMEPLAY2_3, GAMEPLAY2_4, NONE } 
-    enum GameplayAudio3 { GAMEPLAY3_1, GAMEPLAY3_2, GAMEPLAY3_3, NONE } 
-    enum GameplayAudio4 { GAMEPLAY4, NONE }
+    int num_soundtrack;
+    int num_sub_track;
 
-    GameplayAudio1 audio1;
-    GameplayAudio2 audio2;
-    GameplayAudio3 audio3;
-    GameplayAudio4 audio4;
+
+    public static DynamicAudio instance;
 
     void Awake ()
     {
-        GameplayAudio1 audio1 = GameplayAudio1.NONE;
-        GameplayAudio2 audio2 = GameplayAudio2.NONE;
-        GameplayAudio3 audio3 = GameplayAudio3.NONE;
-        GameplayAudio4 audio4 = GameplayAudio4.NONE;
+        // Don't Destroy on load another scene, and deletes if there's another AudioManager
+        if (instance == null)
+            instance = this;
+        else
+        {
+            DestroyObject(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+
+
+        // Initial soundtrack
+        num_soundtrack = 1;
+        num_sub_track = Random.Range(1, 4);
+
+        FindObjectOfType<AudioManager>().Play("Soundtrack" + num_soundtrack.ToString() + "." + num_sub_track.ToString());
+        Debug.Log("Soundtrack" + num_soundtrack.ToString() + "." + num_sub_track.ToString());
     }
 
-    void Update()
+    private void Update()
     {
-        switch (audio1)
+        if (!FindObjectOfType<AudioManager>().IsPlaying("Soundtrack" + num_soundtrack.ToString() + "." + num_sub_track.ToString()))
         {
-            case GameplayAudio1.GAMEPLAY1_1:
-                break;
-            case GameplayAudio1.GAMEPLAY1_2:
-                break;
-            case GameplayAudio1.GAMEPLAY1_3:
-                break;
-            case GameplayAudio1.NONE:
-                break;
-            default:
-                break;
-        }
-
-        switch (audio2)
-        {
-            case GameplayAudio2.GAMEPLAY2_1:
-                break;
-            case GameplayAudio2.GAMEPLAY2_2:
-                break;
-            case GameplayAudio2.GAMEPLAY2_3:
-                break;
-            case GameplayAudio2.GAMEPLAY2_4:
-                break;
-            case GameplayAudio2.NONE:
-                break;
-            default:
-                break;
-        }
-
-        switch (audio3)
-        {
-            case GameplayAudio3.GAMEPLAY3_1:
-                break;
-            case GameplayAudio3.GAMEPLAY3_2:
-                break;
-            case GameplayAudio3.GAMEPLAY3_3:
-                break;
-            case GameplayAudio3.NONE:
-                break;
-            default:
-                break;
-        }
-
-        switch (audio4)
-        {
-            case GameplayAudio4.GAMEPLAY4:
-                break;
-            case GameplayAudio4.NONE:
-                break;
-            default:
-                break;
+            NextSoundtrack();
+            Debug.Log("Soundtrack" + num_soundtrack.ToString() + "." + num_sub_track.ToString());
         }
     }
 
-    
+    void NextSoundtrack()
+    {
+        // Next sountrack
+        if (num_soundtrack >= 4)
+            num_soundtrack = 1;
+        else
+            num_soundtrack++;
+
+        // Random sub_track
+        if(num_soundtrack == 1)
+            num_sub_track = Random.Range(1, 4);
+        if (num_soundtrack == 2)
+            num_sub_track = Random.Range(1, 5);
+        if (num_soundtrack == 3)
+            num_sub_track = Random.Range(1, 4);
+        if (num_soundtrack == 4)
+            num_sub_track = 1;
+
+        FindObjectOfType<AudioManager>().Play("Soundtrack" + num_soundtrack + "." + num_sub_track);
+    }
 }

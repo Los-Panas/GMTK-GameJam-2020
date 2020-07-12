@@ -5452,6 +5452,141 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1236710502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1236710504}
+  - component: {fileID: 1236710503}
+  - component: {fileID: 1236710505}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1236710503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236710502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138fc5fd5a6ac134088b3903913553fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Dash
+    clip_: {fileID: 8300000, guid: 18b241c5255d22f42907de7a4a4dd3b7, type: 3}
+    volume_: 0.432
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Soundtrack1.1
+    clip_: {fileID: 8300000, guid: 304f3755fdf8d19468d1eaba3cf406de, type: 3}
+    volume_: 0.462
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Soundtrack1.2
+    clip_: {fileID: 8300000, guid: b59d86df13013dd4ebb9285f087963fa, type: 3}
+    volume_: 0.462
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Soundtrack1.3
+    clip_: {fileID: 8300000, guid: a27d55867b0461f4897e6fedefe43e8f, type: 3}
+    volume_: 0.462
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Soundtrack2.1
+    clip_: {fileID: 8300000, guid: 29572138263138e4b9f4aeda5b8e0116, type: 3}
+    volume_: 0.462
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Soundtrack2.2
+    clip_: {fileID: 8300000, guid: 8ff118eafa199194585da58bcd40e13f, type: 3}
+    volume_: 0.462
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Soundtrack2.3
+    clip_: {fileID: 8300000, guid: 1be72e5939eb9bf44a182c7f434d521b, type: 3}
+    volume_: 0.462
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Soundtrack2.4
+    clip_: {fileID: 8300000, guid: 85444873fa483a844b744ec6312eab25, type: 3}
+    volume_: 0.462
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Soundtrack3.1
+    clip_: {fileID: 8300000, guid: 7e3d0a7d6968a5f4d802644bb59d0d57, type: 3}
+    volume_: 0.462
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Soundtrack3.2
+    clip_: {fileID: 8300000, guid: 7cffb7140fa554e41b15a847b74c85fb, type: 3}
+    volume_: 0.462
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Soundtrack3.3
+    clip_: {fileID: 8300000, guid: e172d2185fa3ebd48927470925b29492, type: 3}
+    volume_: 0.462
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Soundtrack4.1
+    clip_: {fileID: 8300000, guid: 71c184f59437bf643aabbe0c105bc0bd, type: 3}
+    volume_: 0.462
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Restart
+    clip_: {fileID: 8300000, guid: 56a110b4dd4b6f54babcf0066260cccb, type: 3}
+    volume_: 0.786
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+--- !u!4 &1236710504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236710502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -36.258045, y: -168.2612, z: 1.8745831}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1236710505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236710502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d54d974c5ed79408371b6fa3ae90c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1312077395
 PrefabInstance:
   m_ObjectHideFlags: 0
