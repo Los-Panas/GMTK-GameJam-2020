@@ -50,7 +50,9 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem particleSys;
 
     public Material regularMaterial;
-    public Material invincibleMaterial;
+    public Material lightMaterial;
+    public Material hurtMaterial;
+    public Material lightHurtMaterial;
 
     private void Start()
     {
@@ -88,7 +90,6 @@ public class PlayerController : MonoBehaviour
         RotationInput();
         Shoot();
         healthBarHandler.SetHealth(currentHealth);
-        InvulnerabilityVisual();
     }
 
     void GetMoveInput()
@@ -114,7 +115,30 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (dashDirection != false)
+        if (currentDashCD <= 0)
+        {
+            if (invulnerability)
+            {
+                GetComponent<MeshRenderer>().material = hurtMaterial;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().material = regularMaterial;
+            }
+        }
+        else
+        {
+            if (invulnerability)
+            {
+                GetComponent<MeshRenderer>().material = lightHurtMaterial;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().material = lightMaterial;
+            }
+        }
+
+        if (dashDirection)
         {
             if (dashTimer >= dashDuration)
             {
@@ -188,6 +212,8 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
 
             rmAddPoints.AddPoints();
+
+            //TODO: UI WORLD (+ ROOMMANAGER.SPHEREPOINTS)
 
             if (star002.gameObject.activeInHierarchy == true)
             {
@@ -263,18 +289,6 @@ public class PlayerController : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("Restart");
             Scene curr_scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(curr_scene.name); // I dont know if we need to save some values or not but if we needed to we should store them somewhere before the reload.
-        }
-    }
-
-    public void InvulnerabilityVisual()
-    {
-        if (invulnerability)
-        {
-            GetComponent<MeshRenderer>().material = invincibleMaterial;
-        }
-        else
-        {
-            GetComponent<MeshRenderer>().material = regularMaterial;
         }
     }
 
