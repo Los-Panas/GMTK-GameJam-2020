@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
@@ -54,9 +53,6 @@ public class PlayerController : MonoBehaviour
     public Material lightMaterial;
     public Material hurtMaterial;
     public Material lightHurtMaterial;
-
-    public GameObject DeathMenuUI;
-    public GameObject HuDUI;
 
     private void Start()
     {
@@ -304,16 +300,8 @@ public class PlayerController : MonoBehaviour
         if(currentHealth <= 0) 
         {
             FindObjectOfType<AudioManager>().Play("Restart");
-            //Scene curr_scene = SceneManager.GetActiveScene();
-            //SceneManager.LoadScene(curr_scene.name); // I dont know if we need to save some values or not but if we needed to we should store them somewhere before the reload.
-            Time.timeScale = 0f;
-            FindObjectOfType<CameraShake>().StopShake();
-            ableToFire = false;
-            Cursor.visible = true;
-            DeathMenuUI.SetActive(true);
-            HuDUI.SetActive(false);
-            GameObject.Find("SCORE").GetComponent<Text>().text = "Final Score:  " + rmAddPoints.TotalPoints.ToString();
-
+            Scene curr_scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(curr_scene.name); // I dont know if we need to save some values or not but if we needed to we should store them somewhere before the reload.
         }
     }
 

@@ -57,22 +57,12 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
         //Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        FindObjectOfType<CameraShake>().StopShake();
         GameObject.Find("Walls").GetComponent<RoomManager>().pointIncrement = false;
     }
 
     public void QuitGame()
     {
-        SceneManager.LoadScene(0);
-        Debug.Log("Menu");
-        //Application.Quit();
-    }
-
-    public void Restart()
-    {
-        Scene curr_scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(curr_scene.name);
-        Time.timeScale = 1f;
-        Cursor.visible = false;
+        Debug.Log("Quit!");
+        Application.Quit();
     }
 }
