@@ -50,11 +50,13 @@ public class RandomPointOnMesh : MonoBehaviour
             //UGLIEST CODE ALIVE -- PROTECT YOUR EYES
             sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             sphere.transform.position = randomPoint;
-            sphere.GetComponent<Renderer>().material.color = new Color(0, 1, 0, 1);
+            //sphere.GetComponent<Renderer>().material.color = new Color(0, 1, 0, 1);
             sphere.tag = "PickUp";
             WallRotate wrScript = sphere.AddComponent<WallRotate>();
             wrScript.ySpeed = -10.0f;
             sphere.GetComponent<Collider>().isTrigger = true;
+            Material newMat = Resources.Load("Collectable", typeof(Material)) as Material;
+            sphere.GetComponent<Renderer>().material = newMat;
 
             bangGetPoint = false;
 

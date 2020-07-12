@@ -38,9 +38,10 @@ public class PlayerController : MonoBehaviour
 
     private RandomPointOnMesh star002;
     private RandomPointOnMesh rectangle002;
+    private RandomPointOnMesh pentagon002;
+    private RandomPointOnMesh hexagon002;
+    private RandomPointOnMesh heptagon002;
 
-    private RandomPointOnMesh star0021;
-    private RandomPointOnMesh rectangle0021;
 
     public HealthBarHandler healthBarHandler;
 
@@ -55,17 +56,21 @@ public class PlayerController : MonoBehaviour
         GameObject Walls = GameObject.Find("Walls");
         rmAddPoints = Walls.GetComponent<RoomManager>();
 
-        //GameObject Star002 = GameObject.Find("Star002");
-        //star002 = Star002.GetComponent<RandomPointOnMesh>();
+        GameObject Star002 = GameObject.Find("Star002");
+        star002 = Star002.GetComponent<RandomPointOnMesh>();
 
-        //GameObject Rectangle002 = Walls.transform.Find("Rectangle001").gameObject.transform.Find("Rectangle002").gameObject;
-        //rectangle002 = Rectangle002.GetComponent<RandomPointOnMesh>();
+        GameObject Rectangle002 = Walls.transform.Find("Rectangle001").gameObject.transform.Find("Rectangle002").gameObject;
+        rectangle002 = Rectangle002.GetComponent<RandomPointOnMesh>();
 
-        //GameObject Rectangle0021 = Walls.transform.Find("Rectangle001 (1)").gameObject.transform.Find("Rectangle002").gameObject;
-        //rectangle0021 = Rectangle0021.GetComponent<RandomPointOnMesh>();
+        GameObject Pentagon002 = Walls.transform.Find("Pentagon001").gameObject.transform.Find("Pentagon002").gameObject;
+        pentagon002 = Pentagon002.GetComponent<RandomPointOnMesh>();
 
-        //GameObject Star0021 = Walls.transform.Find("Star001 (1)").gameObject.transform.Find("Star002").gameObject;
-        //star0021 = Star0021.GetComponent<RandomPointOnMesh>();
+        GameObject Hexagon002 = Walls.transform.Find("Hexagon001").gameObject.transform.Find("Hexagon002").gameObject;
+        hexagon002 = Hexagon002.GetComponent<RandomPointOnMesh>();
+
+        GameObject Heptagon002 = Walls.transform.Find("Heptagon001").gameObject.transform.Find("Heptagon002").gameObject;
+        heptagon002 = Heptagon002.GetComponent<RandomPointOnMesh>();
+
         healthBarHandler.SetMaxHealth(health);
     }
 
@@ -178,16 +183,21 @@ public class PlayerController : MonoBehaviour
                 rectangle002.bangGetPoint = true;
                 Debug.Log("sphere2 true");
             }
-            //if (star0021.gameObject.activeInHierarchy == true)
-            //{
-            //    star0021.bangGetPoint = true;
-            //    Debug.Log("sphere1 true");
-            //}
-            //if (rectangle0021.gameObject.activeInHierarchy == true)
-            //{
-            //    rectangle0021.bangGetPoint = true;
-            //    Debug.Log("sphere2 true");
-            //}
+            if (pentagon002.gameObject.activeInHierarchy == true)
+            {
+                pentagon002.bangGetPoint = true;
+                Debug.Log("sphere3 true");
+            }
+            if (hexagon002.gameObject.activeInHierarchy == true)
+            {
+                hexagon002.bangGetPoint = true;
+                Debug.Log("sphere4 true");
+            }
+            if (heptagon002.gameObject.activeInHierarchy == true)
+            {
+                heptagon002.bangGetPoint = true;
+                Debug.Log("sphere5 true");
+            }
         }
     }
 

@@ -8,18 +8,23 @@ public class RoomManager : MonoBehaviour
     int actualChild = 1;
     Transform[] children;
     public int points;
+    Transform playerPos;
 
+    public int maxPoints = 150;
+    
     // Start is called before the first frame update
     void Start()
     {
         children = GetComponentsInChildren<Transform>(true);
         points = 0;
+        GameObject Player = GameObject.Find("Player");
+        playerPos = Player.GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (points >= 100 && children[actualChild] != null) //if points are 
+        if (points >= maxPoints && children[actualChild] != null) //if points are 
         {
             children[actualChild].gameObject.SetActive(false);
             children[actualChild + 1].gameObject.SetActive(false);
@@ -36,6 +41,13 @@ public class RoomManager : MonoBehaviour
             actualChild = actualChild + 2;
 
             //TODO: borrar balas en la escena
+            var clones = GameObject.FindGameObjectsWithTag("Bullet");
+            foreach (var clone in clones)
+            {
+                Destroy(clone);
+            }
+
+            playerPos.position = new Vector3(0, 1.5f, 0);
 
             points = 0;
         }
