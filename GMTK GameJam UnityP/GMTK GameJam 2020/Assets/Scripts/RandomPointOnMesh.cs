@@ -15,15 +15,18 @@ public class RandomPointOnMesh : MonoBehaviour
 
     RoomManager roomManager;
 
+
     private void Start()
     {
         lookupCollider = GetComponent<MeshCollider>();
         GameObject Walls = GameObject.Find("Walls");
         roomManager = Walls.GetComponent<RoomManager>();
+        bangGetPoint = true;
     }
 
     void Update()
     {
+
 
         if (bangGetPoint)
         {
