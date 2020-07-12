@@ -112,6 +112,8 @@ public class PlayerController : MonoBehaviour
         {
             dashDirection = true;
             FindObjectOfType<AudioManager>().Play("Dash");
+            //FindObjectOfType<CameraShake>().StartCorutineShake(.2f, .3f);
+
 
         }
 
@@ -287,7 +289,7 @@ public class PlayerController : MonoBehaviour
             if (!invulnerability)
             {
                 currentHealth -= 10; //SHOULD HAVE A BULLET DAMAGE FOR NOW IS HARDCODED
-                FindObjectOfType<CameraShake>().StartCorutineShake();
+                FindObjectOfType<CameraShake>().StartCorutineShake(.825f, .4f);
                 FindObjectOfType<AudioManager>().Play("Gethit");
                 invulnerability = true;
                 StartCoroutine(ImmuneTime(Time.realtimeSinceStartup));

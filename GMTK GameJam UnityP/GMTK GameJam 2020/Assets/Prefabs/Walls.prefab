@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b00765b40d9dd5c47845384007d40b81, type: 2}
+  - {fileID: 2100000, guid: dcdc3ab6ad764414dacbc6201be18ecd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -175,7 +175,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
-  maxPoints: 150
+  maxPoints: 1000
+  spherePoints: 50
+  maxPointsIncrease: 250
+  TotalPoints: 0
+  playerController: {fileID: 0}
 --- !u!1 &4487512850838120780
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +242,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 4391b681d9c85204db5e9b671cc8ce4b, type: 3}
+  - {fileID: 2100000, guid: 89ff0b56199f14748a7560cfd96785d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -411,6 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bangGetPoint: 0
   debugPoints: []
+  callOnce: 0
 --- !u!1 &4963295446297224272
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +478,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3bbbbe3c402bdc74e8fe0d079943c684, type: 2}
+  - {fileID: 2100000, guid: 010b591e8f3a7ec4fb24b0069555b206, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -646,6 +651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bangGetPoint: 1
   debugPoints: []
+  callOnce: 0
 --- !u!1 &6190326730206969207
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,7 +714,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d8d0b43b507114c4c854bbca34ee2891, type: 2}
+  - {fileID: 2100000, guid: 2ad4e3a7b65dc274e87d515e92616013, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -834,7 +840,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: b739d3f7b422ad64b950614ea6358cfa, type: 3}
+  - {fileID: 2100000, guid: c65cb4877613cdc42bac2be1842141fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1007,6 +1013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bangGetPoint: 0
   debugPoints: []
+  callOnce: 0
 --- !u!1 &8222280387807359276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,6 +1123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bangGetPoint: 0
   debugPoints: []
+  callOnce: 0
 --- !u!1 &8625681997281417692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,3 +1233,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bangGetPoint: 0
   debugPoints: []
+  callOnce: 0
