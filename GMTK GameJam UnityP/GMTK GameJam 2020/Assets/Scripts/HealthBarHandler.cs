@@ -11,12 +11,10 @@ public class HealthBarHandler : MonoBehaviour
     {
         slider.maxValue = health;
         slider.value = health;
-        Debug.Log("Max Health");
     }
 
     public void SetHealth(int health)
     {
         slider.value = health;
-        Debug.Log("Minus Health");
     }
 }

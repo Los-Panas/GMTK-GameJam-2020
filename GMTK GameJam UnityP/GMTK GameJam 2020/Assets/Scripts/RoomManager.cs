@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class RoomManager : MonoBehaviour
     Transform playerPos;
 
     public int maxPoints = 150;
+
+    public PlayerController playerController;
     
     // Start is called before the first frame update
     void Start()
@@ -50,11 +53,22 @@ public class RoomManager : MonoBehaviour
             playerPos.position = new Vector3(0, 1.5f, 0);
 
             points = 0;
+
+            playerController.HealthToMax();
         }
+
+        GameObject.Find("ScoreText").GetComponent<Text>().text = points.ToString();
+        StartCoroutine(PointIncrementOverTime());
     }
 
     public void AddPoints()
     {
         points = points + 50;
+    }
+
+    IEnumerator PointIncrementOverTime()
+    {
+        points++;
+        yield return new WaitForEndOfFrame();
     }
 }
