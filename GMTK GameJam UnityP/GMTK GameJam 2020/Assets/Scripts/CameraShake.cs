@@ -10,6 +10,11 @@ public class CameraShake : MonoBehaviour
         StartCoroutine(Shake(.825f, .4f));
     }
 
+    public void StopShake()
+    {
+        StopCoroutine(Shake(.825f, .4f));
+    }
+
     public IEnumerator Shake(float duration, float magnitude)
     {
         Vector3 originalPos = transform.localPosition;
@@ -20,7 +25,7 @@ public class CameraShake : MonoBehaviour
             float y = Random.Range(-1, 1) * magnitude;
             transform.localPosition = new Vector3(x, y, originalPos.z);
             elapsed += Time.deltaTime;
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
         transform.localPosition = originalPos;
     }
