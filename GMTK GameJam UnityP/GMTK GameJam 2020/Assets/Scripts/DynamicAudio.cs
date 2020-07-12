@@ -32,7 +32,7 @@ public class DynamicAudio : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Soundtrack" + num_soundtrack.ToString() + "." + num_sub_track.ToString());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!FindObjectOfType<AudioManager>().IsPlaying("Soundtrack" + num_soundtrack.ToString() + "." + num_sub_track.ToString()))
             NextSoundtrack();
