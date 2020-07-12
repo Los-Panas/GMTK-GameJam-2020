@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private RandomPointOnMesh hexagon002;
     private RandomPointOnMesh heptagon002;
 
+    private int count;
 
     public HealthBarHandler healthBarHandler;
 
@@ -52,6 +53,8 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody>();
         currentDashCD = dashCD;
         dashDirection = false;
+
+        count = 0;
 
         GameObject Walls = GameObject.Find("Walls");
         rmAddPoints = Walls.GetComponent<RoomManager>();
@@ -173,30 +176,57 @@ public class PlayerController : MonoBehaviour
 
             rmAddPoints.AddPoints();
 
-            if(star002.gameObject.activeInHierarchy == true)
+            if (star002.gameObject.activeInHierarchy == true)
             {
                 star002.bangGetPoint = true;
-                Debug.Log("sphere1 true");
+                //Debug.Log("sphere1 true");
             }
             if (rectangle002.gameObject.activeInHierarchy == true)
             {
                 rectangle002.bangGetPoint = true;
-                Debug.Log("sphere2 true");
+                if(rectangle002.bangGetPoint == true)
+                {
+                    count = count + 1;
+                }
+                if(count >= 2)
+                {
+                    pentagon002.bangGetPoint = true;
+                    count = 0;
+                }
+                //Debug.Log("sphere2 true");
             }
             if (pentagon002.gameObject.activeInHierarchy == true)
             {
                 pentagon002.bangGetPoint = true;
-                Debug.Log("sphere3 true");
+                //Debug.Log("sphere3 true");
+                if (pentagon002.bangGetPoint == true)
+                {
+                    count = count + 1;
+                }
+                if (count >= 2)
+                {
+                    hexagon002.bangGetPoint = true;
+                    count = 0;
+                }
             }
             if (hexagon002.gameObject.activeInHierarchy == true)
             {
                 hexagon002.bangGetPoint = true;
-                Debug.Log("sphere4 true");
+                if (hexagon002.bangGetPoint == true)
+                {
+                    count = count + 1;
+                }
+                if (count >= 2)
+                {
+                    heptagon002.bangGetPoint = true;
+                    count = 0;
+                }
+                //Debug.Log("sphere4 true");
             }
             if (heptagon002.gameObject.activeInHierarchy == true)
             {
                 heptagon002.bangGetPoint = true;
-                Debug.Log("sphere5 true");
+                //Debug.Log("sphere5 true");
             }
         }
     }

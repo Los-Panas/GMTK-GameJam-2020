@@ -6,44 +6,23 @@ public class RandomPointOnMesh : MonoBehaviour
 {
     private MeshCollider lookupCollider;
 
-    public bool bangGetPoint;
+    public bool bangGetPoint = false;
     private Vector3 randomPoint;
 
     public List<Vector3> debugPoints;
 
     GameObject sphere;
-    private RandomPointOnMesh star002;
 
     private void Start()
     {
-        //GameObject Star002 = GameObject.Find("Star002");
-        //star002 = Star002.GetComponent<RandomPointOnMesh>();
-
-        //if (star002.gameObject.activeInHierarchy == true)
-        //{
-        //    bangGetPoint = true;
-        //}
-        //else
-        //{
-        //    bangGetPoint = false;
-        //}
-
-        bangGetPoint = true;
-
-
         lookupCollider = GetComponent<MeshCollider>();
     }
 
     void Update()
     {
-        //if (star002.gameObject.activeInHierarchy != true)
-        //{
-        //    lookupCollider = GetComponent<MeshCollider>();
-        //}
 
         if (bangGetPoint)
         {
-
             Vector3 randomPoint = GetRandomPointOnMesh(lookupCollider.sharedMesh) * 0.3f;
             randomPoint += lookupCollider.transform.position;
 
