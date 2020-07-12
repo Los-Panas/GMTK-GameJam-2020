@@ -23,21 +23,21 @@ public class RoomManager : MonoBehaviour
         {
             children[actualChild].gameObject.SetActive(false);
             children[actualChild + 1].gameObject.SetActive(false);
-            children[actualChild + 2].gameObject.SetActive(true);
-            children[actualChild + 3].gameObject.SetActive(true);
+            if(actualChild + 3 <= children.Length)
+            {
+                children[actualChild + 2].gameObject.SetActive(true);
+                children[actualChild + 3].gameObject.SetActive(true);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+
             actualChild = actualChild + 2;
+
             //TODO: borrar balas en la escena
+
             points = 0;
-        }
-
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            AddPoints();
-        }
-
-        if(actualChild > children.Length)
-        {
-            //GO TO WIN MENU
         }
     }
 

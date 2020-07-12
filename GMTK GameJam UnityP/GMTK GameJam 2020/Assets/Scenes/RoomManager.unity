@@ -815,8 +815,8 @@ MonoBehaviour:
   Bulletspawn: {fileID: 85558853}
   dashCD: 0
   currentDashCD: 0
-  dashDuration: 0
-  dashSpeed: 20
+  dashDuration: 0.05
+  dashSpeed: 50
   dashTimer: 0
 --- !u!54 &1618039835
 Rigidbody:
@@ -1182,6 +1182,8 @@ GameObject:
   - component: {fileID: 3196120254220133123}
   - component: {fileID: 3857653483431804848}
   - component: {fileID: 75146420504582866}
+  - component: {fileID: 2236685251699938710}
+  - component: {fileID: 2236685251699938709}
   m_Layer: 0
   m_Name: Rectangle002
   m_TagString: Untagged
@@ -1189,6 +1191,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2236685251699938709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2236685251699938708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0594f351efc6cdd4999cac69d540ff14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bangGetPoint: 0
+  debugPoints: []
+--- !u!64 &2236685251699938710
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2236685251699938708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8377211728942078173, guid: b739d3f7b422ad64b950614ea6358cfa, type: 3}
 --- !u!4 &2707103342916901203
 Transform:
   m_ObjectHideFlags: 0
@@ -1437,6 +1467,8 @@ GameObject:
   - component: {fileID: 3710874882965919149}
   - component: {fileID: 715783084778155200}
   - component: {fileID: 7239272631792174113}
+  - component: {fileID: 7441191705739837538}
+  - component: {fileID: 7441191705739837537}
   m_Layer: 0
   m_Name: Star002
   m_TagString: Untagged
@@ -1444,6 +1476,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7441191705739837537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7441191705739837536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0594f351efc6cdd4999cac69d540ff14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bangGetPoint: 0
+  debugPoints: []
+--- !u!64 &7441191705739837538
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7441191705739837536}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5376302734938163694, guid: 4391b681d9c85204db5e9b671cc8ce4b, type: 3}
 --- !u!4 &8096840095950344596
 Transform:
   m_ObjectHideFlags: 0

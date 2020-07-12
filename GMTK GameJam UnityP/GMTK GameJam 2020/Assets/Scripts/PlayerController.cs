@@ -34,11 +34,34 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody body;
 
+    private RoomManager rmAddPoints;
+
+    private RandomPointOnMesh star002;
+    private RandomPointOnMesh rectangle002;
+
+    private RandomPointOnMesh star0021;
+    private RandomPointOnMesh rectangle0021;
+
     private void Start()
     {
         body = GetComponent<Rigidbody>();
         currentDashCD = dashCD;
         dashDirection = false;
+
+        GameObject Walls = GameObject.Find("Walls");
+        rmAddPoints = Walls.GetComponent<RoomManager>();
+
+        GameObject Star002 = GameObject.Find("Star002");
+        star002 = Star002.GetComponent<RandomPointOnMesh>();
+
+        GameObject Rectangle002 = Walls.transform.Find("Rectangle001").gameObject.transform.Find("Rectangle002").gameObject;
+        rectangle002 = Rectangle002.GetComponent<RandomPointOnMesh>();
+
+        //GameObject Rectangle0021 = Walls.transform.Find("Rectangle001 (1)").gameObject.transform.Find("Rectangle002").gameObject;
+        //rectangle0021 = Rectangle0021.GetComponent<RandomPointOnMesh>();
+
+        //GameObject Star0021 = Walls.transform.Find("Star001 (1)").gameObject.transform.Find("Star002").gameObject;
+        //star0021 = Star0021.GetComponent<RandomPointOnMesh>();
     }
 
     void Update()
@@ -128,6 +151,37 @@ public class PlayerController : MonoBehaviour
             clone = Instantiate(bulletmesh, Bulletspawn.position, Bulletspawn.rotation);
             clone.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
         }       
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            Destroy(other.gameObject);
+
+            rmAddPoints.AddPoints();
+
+            if(star002.gameObject.activeInHierarchy == true)
+            {
+                star002.bangGetPoint = true;
+                Debug.Log("sphere1 true");
+            }
+            if (rectangle002.gameObject.activeInHierarchy == true)
+            {
+                rectangle002.bangGetPoint = true;
+                Debug.Log("sphere2 true");
+            }
+            //if (star0021.gameObject.activeInHierarchy == true)
+            //{
+            //    star0021.bangGetPoint = true;
+            //    Debug.Log("sphere1 true");
+            //}
+            //if (rectangle0021.gameObject.activeInHierarchy == true)
+            //{
+            //    rectangle0021.bangGetPoint = true;
+            //    Debug.Log("sphere2 true");
+            //}
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
