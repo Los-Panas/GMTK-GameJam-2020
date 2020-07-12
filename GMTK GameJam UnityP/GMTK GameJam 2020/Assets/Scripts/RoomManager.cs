@@ -90,7 +90,7 @@ public class RoomManager : MonoBehaviour
             playerController.HealthToMax();
         }
 
-        GameObject.Find("ScoreText").GetComponent<Text>().text = "Points: " + points.ToString();
+        GameObject.Find("ScoreText").GetComponent<Text>().text = "Coins: " + points.ToString();
 
         if (pointIncrement)
         {
@@ -102,8 +102,8 @@ public class RoomManager : MonoBehaviour
         }
 
 
-        GameObject.Find("BarrierScoreText").GetComponent<Text>().text = "TP Points: " + maxPoints.ToString();
-        GameObject.Find("TotalScore").GetComponent<Text>().text = "Total Score: " + TotalPoints.ToString();
+        GameObject.Find("BarrierScoreText").GetComponent<Text>().text = "Coins for next teleporter: " + maxPoints.ToString();
+        GameObject.Find("TotalScore").GetComponent<Text>().text = "Total coins: " + TotalPoints.ToString();
     }
 
     public void AddPoints()
