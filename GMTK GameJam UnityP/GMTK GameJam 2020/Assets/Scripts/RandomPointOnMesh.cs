@@ -6,44 +6,27 @@ public class RandomPointOnMesh : MonoBehaviour
 {
     private MeshCollider lookupCollider;
 
-    public bool bangGetPoint;
+    public bool bangGetPoint = false;
     private Vector3 randomPoint;
 
     public List<Vector3> debugPoints;
 
     GameObject sphere;
-    private RandomPointOnMesh star002;
+
+    RoomManager roomManager;
 
     private void Start()
     {
-        //GameObject Star002 = GameObject.Find("Star002");
-        //star002 = Star002.GetComponent<RandomPointOnMesh>();
-
-        //if (star002.gameObject.activeInHierarchy == true)
-        //{
-        //    bangGetPoint = true;
-        //}
-        //else
-        //{
-        //    bangGetPoint = false;
-        //}
-
-        bangGetPoint = true;
-
-
         lookupCollider = GetComponent<MeshCollider>();
+        GameObject Walls = GameObject.Find("Walls");
+        roomManager = Walls.GetComponent<RoomManager>();
     }
 
     void Update()
     {
-        //if (star002.gameObject.activeInHierarchy != true)
-        //{
-        //    lookupCollider = GetComponent<MeshCollider>();
-        //}
 
         if (bangGetPoint)
         {
-
             Vector3 randomPoint = GetRandomPointOnMesh(lookupCollider.sharedMesh) * 0.3f;
             randomPoint += lookupCollider.transform.position;
 
@@ -55,8 +38,21 @@ public class RandomPointOnMesh : MonoBehaviour
             WallRotate wrScript = sphere.AddComponent<WallRotate>();
             wrScript.ySpeed = -10.0f;
             sphere.GetComponent<Collider>().isTrigger = true;
-            Material newMat = Resources.Load("Collectable", typeof(Material)) as Material;
-            sphere.GetComponent<Renderer>().material = newMat;
+
+            if(roomManager.points == roomManager.maxPoints - roomManager.spherePoints)
+            {
+                Material newMat = Resources.Load("Collectable", typeof(Material)) as Material;
+                sphere.GetComponent<Renderer>().material = newMat;
+                Color color = new Color(0, 0, 1, 1);
+                sphere.GetComponent<Renderer>().material.SetColor("_EmissionColor", color);
+
+            }
+            else
+            {
+                Material newMat = Resources.Load("Collectable", typeof(Material)) as Material;
+                sphere.GetComponent<Renderer>().material = newMat;
+            }
+            
 
             bangGetPoint = false;
 

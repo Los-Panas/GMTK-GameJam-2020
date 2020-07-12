@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int minNumOfShots;
     [SerializeField] int maxNumfShots;
     private GameObject clone;
-    public int health = 100;
+    public int maxHealth = 100;
+    public int currentHealth;
     public int spawnTime;
     public bool invulnerability = false;
     public float invulnerability_time = 2f;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private RandomPointOnMesh hexagon002;
     private RandomPointOnMesh heptagon002;
 
+    private int count;
 
     public HealthBarHandler healthBarHandler;
 
@@ -52,6 +54,8 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody>();
         currentDashCD = dashCD;
         dashDirection = false;
+
+        count = 0;
 
         GameObject Walls = GameObject.Find("Walls");
         rmAddPoints = Walls.GetComponent<RoomManager>();
@@ -71,14 +75,16 @@ public class PlayerController : MonoBehaviour
         GameObject Heptagon002 = Walls.transform.Find("Heptagon001").gameObject.transform.Find("Heptagon002").gameObject;
         heptagon002 = Heptagon002.GetComponent<RandomPointOnMesh>();
 
-        healthBarHandler.SetMaxHealth(health);
+        healthBarHandler.SetMaxHealth(maxHealth);
+        currentHealth = maxHealth;
     }
 
     void Update()
     {
         GetMoveInput();
         RotationInput();
-        Shoot();       
+        Shoot();
+        healthBarHandler.SetHealth(currentHealth);
     }
 
     void GetMoveInput()
@@ -174,30 +180,57 @@ public class PlayerController : MonoBehaviour
 
             rmAddPoints.AddPoints();
 
-            if(star002.gameObject.activeInHierarchy == true)
+            if (star002.gameObject.activeInHierarchy == true)
             {
                 star002.bangGetPoint = true;
-                Debug.Log("sphere1 true");
+                //Debug.Log("sphere1 true");
             }
             if (rectangle002.gameObject.activeInHierarchy == true)
             {
                 rectangle002.bangGetPoint = true;
-                Debug.Log("sphere2 true");
+                if(rectangle002.bangGetPoint == true)
+                {
+                    count = count + 1;
+                }
+                if(count >= 2)
+                {
+                    pentagon002.bangGetPoint = true;
+                    count = 0;
+                }
+                //Debug.Log("sphere2 true");
             }
             if (pentagon002.gameObject.activeInHierarchy == true)
             {
                 pentagon002.bangGetPoint = true;
-                Debug.Log("sphere3 true");
+                //Debug.Log("sphere3 true");
+                if (pentagon002.bangGetPoint == true)
+                {
+                    count = count + 1;
+                }
+                if (count >= 2)
+                {
+                    hexagon002.bangGetPoint = true;
+                    count = 0;
+                }
             }
             if (hexagon002.gameObject.activeInHierarchy == true)
             {
                 hexagon002.bangGetPoint = true;
-                Debug.Log("sphere4 true");
+                if (hexagon002.bangGetPoint == true)
+                {
+                    count = count + 1;
+                }
+                if (count >= 2)
+                {
+                    heptagon002.bangGetPoint = true;
+                    count = 0;
+                }
+                //Debug.Log("sphere4 true");
             }
             if (heptagon002.gameObject.activeInHierarchy == true)
             {
                 heptagon002.bangGetPoint = true;
-                Debug.Log("sphere5 true");
+                //Debug.Log("sphere5 true");
             }
         }
     }
@@ -208,21 +241,27 @@ public class PlayerController : MonoBehaviour
         {
             if (!invulnerability)
             {
-                health -= 10; //SHOULD HAVE A BULLET DAMAGE FOR NOW IS HARDCODED
-                healthBarHandler.SetHealth(health);
+                currentHealth -= 10; //SHOULD HAVE A BULLET DAMAGE FOR NOW IS HARDCODED
                 invulnerability = true;
                 StartCoroutine(ImmuneTime(Time.realtimeSinceStartup));
             }
             Destroy(collision.gameObject);
         }
         
-        if(health <= 0) 
+        if(currentHealth <= 0) 
         {
             Scene curr_scene = SceneManager.GetActiveScene();
             FindObjectOfType<AudioManager>().Play("Restart");
             SceneManager.LoadScene(curr_scene.name); // I dont know if we need to save some values or not but if we needed to we should store them somewhere before the reload.
         }
     }
+
+    public void HealthToMax()
+    {
+        Debug.Log("Healed");
+        currentHealth = maxHealth;
+    }
+
     IEnumerator ImmuneTime(float time)
     {
         while ((Time.realtimeSinceStartup - time) < invulnerability_time)
