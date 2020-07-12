@@ -36,7 +36,6 @@ public class DynamicAudio : MonoBehaviour
     {
         if (!FindObjectOfType<AudioManager>().IsPlaying("Soundtrack" + num_soundtrack.ToString() + "." + num_sub_track.ToString()))
             NextSoundtrack();
-        
     }
 
     void NextSoundtrack()

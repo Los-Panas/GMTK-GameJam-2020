@@ -167,8 +167,10 @@ public class PlayerController : MonoBehaviour
         {
             clone = Instantiate(bulletmesh, Bulletspawn.position, Bulletspawn.rotation);
             clone.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
-            particleSys.Emit(30);
         }
+        particleSys.Emit(30);
+        FindObjectOfType<AudioManager>().Play("Shot");
+
 
     }
 
@@ -239,6 +241,7 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {
+            FindObjectOfType<AudioManager>().Play("Gethit");
             if (!invulnerability)
             {
                 currentHealth -= 10; //SHOULD HAVE A BULLET DAMAGE FOR NOW IS HARDCODED

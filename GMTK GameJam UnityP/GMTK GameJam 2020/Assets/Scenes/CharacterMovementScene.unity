@@ -5645,6 +5645,18 @@ MonoBehaviour:
     pitch_: 1
     loop_: 0
     source: {fileID: 0}
+  - name: Shot
+    clip_: {fileID: 8300000, guid: 9c2d88bdc7284e4409e6c5576fbb7b37, type: 3}
+    volume_: 0.053
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
+  - name: Gethit
+    clip_: {fileID: 8300000, guid: 11d9f5e0037e0a54eb225520a776449e, type: 3}
+    volume_: 0.364
+    pitch_: 1
+    loop_: 0
+    source: {fileID: 0}
 --- !u!4 &1236710504
 Transform:
   m_ObjectHideFlags: 0
