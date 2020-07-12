@@ -45,7 +45,8 @@ public class PlayerController : MonoBehaviour
 
     public HealthBarHandler healthBarHandler;
 
-    public ParticleSystem particleSys;
+    public ParticleSystem muzzleParticles;
+    public ParticleSystem dashParticles;
 
     private void Start()
     {
@@ -104,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
         if (dashDirection != false)
         {
+            dashParticles.startDelay = dashDuration * 2;
             if (dashTimer >= dashDuration)
             {
                 dashDirection = false;
@@ -113,6 +115,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 StartCoroutine(TrailToggle());
+                dashParticles.Emit(50);
                 dashTimer += Time.deltaTime;
                 currentDashCD = dashCD;
                 body.velocity = movement.normalized * dashSpeed;
@@ -160,7 +163,7 @@ public class PlayerController : MonoBehaviour
         {
             clone = Instantiate(bulletmesh, Bulletspawn.position, Bulletspawn.rotation);
             clone.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
-            particleSys.Emit(30);
+            muzzleParticles.Emit(30);
         }
 
     }
