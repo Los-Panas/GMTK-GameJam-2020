@@ -232,6 +232,9 @@ public class PlayerController : MonoBehaviour
                     pentagon002.bangGetPoint = true;
                     count = 0;
                 }
+                maxNumfShots = 1;
+                bulletSpeed = 500;
+
                 //Debug.Log("sphere2 true");
             }
             if (pentagon002.gameObject.activeInHierarchy == true)
@@ -247,6 +250,9 @@ public class PlayerController : MonoBehaviour
                     hexagon002.bangGetPoint = true;
                     count = 0;
                 }
+                maxNumfShots = 2;
+                minNumOfShots = 2;
+                bulletSpeed = 500;
             }
             if (hexagon002.gameObject.activeInHierarchy == true)
             {
@@ -261,11 +267,17 @@ public class PlayerController : MonoBehaviour
                     count = 0;
                 }
                 //Debug.Log("sphere4 true");
+               
             }
             if (heptagon002.gameObject.activeInHierarchy == true)
             {
                 heptagon002.bangGetPoint = true;
                 //Debug.Log("sphere5 true");
+                maxNumfShots = 2;
+                minNumOfShots = 3;
+                bulletSpeed = 600;
+                
+
             }
         }
     }
@@ -274,10 +286,11 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {
-            FindObjectOfType<AudioManager>().Play("Gethit");
             if (!invulnerability)
             {
                 currentHealth -= 10; //SHOULD HAVE A BULLET DAMAGE FOR NOW IS HARDCODED
+                FindObjectOfType<CameraShake>().StartCorutineShake();
+                FindObjectOfType<AudioManager>().Play("Gethit");
                 invulnerability = true;
                 StartCoroutine(ImmuneTime(Time.realtimeSinceStartup));
             }

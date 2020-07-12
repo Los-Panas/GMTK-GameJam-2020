@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    private void Update()
-    {
-        if(Input.GetMouseButton(0))
-        {
-            StartCoroutine(Shake(.125f, .2f));
-        }
-    }
 
+    public void StartCorutineShake()
+    {
+        StartCoroutine(Shake(.825f, .4f));
+    }
 
     public IEnumerator Shake(float duration, float magnitude)
     {

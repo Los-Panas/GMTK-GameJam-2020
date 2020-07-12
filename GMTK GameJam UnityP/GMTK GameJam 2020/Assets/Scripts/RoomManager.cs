@@ -15,6 +15,8 @@ public class RoomManager : MonoBehaviour
     public int spherePoints = 50;
     public int maxPointsIncrease = 250;
 
+    public int TotalPoints;
+
     public PlayerController playerController;
     private Teleport teleport;
 
@@ -67,11 +69,11 @@ public class RoomManager : MonoBehaviour
                 Destroy(clone);
             }
 
-            //TODO: WHEN ROOM CHANGE, INCREASE MAXPOINTS
-
             maxPoints = maxPoints + maxPointsIncrease;
 
             playerPos.position = new Vector3(0, 1.5f, 0);
+
+            TotalPoints += points + maxPoints;
 
             points = 0;
 
@@ -79,10 +81,11 @@ public class RoomManager : MonoBehaviour
         }
 
         GameObject.Find("ScoreText").GetComponent<Text>().text = "Points:" + points.ToString();
+
         StartCoroutine(PointIncrementOverTime());
 
-        GameObject.Find("BarrierScoreText").GetComponent<Text>().text = "Next Room:" + maxPoints.ToString();
-
+        GameObject.Find("BarrierScoreText").GetComponent<Text>().text = "Points for next Room: " + maxPoints.ToString();
+        GameObject.Find("TotalScore").GetComponent<Text>().text = "Total Score: " + TotalPoints.ToString();
     }
 
     public void AddPoints()
