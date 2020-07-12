@@ -5,9 +5,9 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
 
-    public void StartCorutineShake()
+    public void StartCorutineShake(float duration, float force)
     {
-        StartCoroutine(Shake(.825f, .4f));
+        StartCoroutine(Shake(duration, force));
     }
 
     public IEnumerator Shake(float duration, float magnitude)
