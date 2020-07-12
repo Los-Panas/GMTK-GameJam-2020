@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     private PlayerController ablefire;
+    //public Image cursor;
 
     void Start()
     {
@@ -28,11 +29,14 @@ public class PauseMenu : MonoBehaviour
             Pause();
          }
         }
+        
+
+
     }
 
     void Awake()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
     public void Continue ()
     {
