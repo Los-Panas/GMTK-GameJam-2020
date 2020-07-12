@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int minNumOfShots;
     [SerializeField] int maxNumfShots;
     private GameObject clone;
-    public float health = 100f;
+    public int health = 100;
     public int spawnTime;
     public bool invulnerability = false;
     public float invulnerability_time = 2f;
@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     private RandomPointOnMesh star0021;
     private RandomPointOnMesh rectangle0021;
 
+    public HealthBarHandler healthBarHandler;
+
     private void Start()
     {
         body = GetComponent<Rigidbody>();
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
 
         //GameObject Star0021 = Walls.transform.Find("Star001 (1)").gameObject.transform.Find("Star002").gameObject;
         //star0021 = Star0021.GetComponent<RandomPointOnMesh>();
+        healthBarHandler.SetMaxHealth(health);
     }
 
     void Update()
@@ -190,7 +193,8 @@ public class PlayerController : MonoBehaviour
         {
             if (!invulnerability)
             {
-                health -= 10f; //SHOULD HAVE A BULLET DAMAGE FOR NOW IS HARDCODED
+                health -= 10; //SHOULD HAVE A BULLET DAMAGE FOR NOW IS HARDCODED
+                healthBarHandler.SetHealth(health);
                 invulnerability = true;
                 StartCoroutine(ImmuneTime(Time.realtimeSinceStartup));
             }
