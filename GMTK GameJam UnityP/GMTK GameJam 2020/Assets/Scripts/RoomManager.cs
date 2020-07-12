@@ -29,6 +29,7 @@ public class RoomManager : MonoBehaviour
         playerPos = Player.GetComponent<Transform>();
         GameObject Teleport = GameObject.Find("Teleport");
         teleport = Teleport.GetComponent<Teleport>();
+        TotalPoints = 0;
     }
 
     // Update is called once per frame
@@ -80,7 +81,7 @@ public class RoomManager : MonoBehaviour
             playerController.HealthToMax();
         }
 
-        GameObject.Find("ScoreText").GetComponent<Text>().text = "Points:" + points.ToString();
+        GameObject.Find("ScoreText").GetComponent<Text>().text = "Points: " + points.ToString();
 
         StartCoroutine(PointIncrementOverTime());
 
