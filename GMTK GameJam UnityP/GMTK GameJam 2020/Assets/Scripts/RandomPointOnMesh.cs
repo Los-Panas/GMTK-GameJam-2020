@@ -39,7 +39,7 @@ public class RandomPointOnMesh : MonoBehaviour
             wrScript.ySpeed = -10.0f;
             sphere.GetComponent<Collider>().isTrigger = true;
 
-            if(roomManager.points == roomManager.maxPoints - 50)
+            if(roomManager.points == roomManager.maxPoints - roomManager.spherePoints)
             {
                 Material newMat = Resources.Load("Collectable", typeof(Material)) as Material;
                 sphere.GetComponent<Renderer>().material = newMat;

@@ -12,9 +12,11 @@ public class RoomManager : MonoBehaviour
     Transform playerPos;
 
     public int maxPoints = 150;
+    public int spherePoints = 50;
 
     public PlayerController playerController;
-    
+    private Teleport teleport;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +24,14 @@ public class RoomManager : MonoBehaviour
         points = 0;
         GameObject Player = GameObject.Find("Player");
         playerPos = Player.GetComponent<Transform>();
+        GameObject Teleport = GameObject.Find("Teleport");
+        teleport = Teleport.GetComponent<Teleport>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (points >= maxPoints && children[actualChild] != null) //if points are 
+        if (points >= maxPoints && children[actualChild] != null && teleport.inTeleport == true) //if points are 
         {
             children[actualChild].gameObject.SetActive(false);
             children[actualChild + 1].gameObject.SetActive(false);
@@ -50,6 +54,12 @@ public class RoomManager : MonoBehaviour
                 Destroy(clone);
             }
 
+            var clones1 = GameObject.FindGameObjectsWithTag("PickUp");
+            foreach (var clone in clones1)
+            {
+                Destroy(clone);
+            }
+
             playerPos.position = new Vector3(0, 1.5f, 0);
 
             points = 0;
@@ -63,7 +73,7 @@ public class RoomManager : MonoBehaviour
 
     public void AddPoints()
     {
-        points = points + 50;
+        points = points + spherePoints;
     }
 
     IEnumerator PointIncrementOverTime()
