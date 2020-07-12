@@ -17,6 +17,8 @@ public class RoomManager : MonoBehaviour
 
     public int TotalPoints;
 
+    public bool pointIncrement;
+
     public PlayerController playerController;
     private Teleport teleport;
 
@@ -30,6 +32,7 @@ public class RoomManager : MonoBehaviour
         GameObject Teleport = GameObject.Find("Teleport");
         teleport = Teleport.GetComponent<Teleport>();
         TotalPoints = 0;
+        pointIncrement = true;
     }
 
     // Update is called once per frame
@@ -40,7 +43,7 @@ public class RoomManager : MonoBehaviour
         {
             Destroy(clones2[0]);
         }
-
+            
         if (points >= maxPoints && children[actualChild] != null && teleport.inTeleport == true) //if points are 
         {
             children[actualChild].gameObject.SetActive(false);
@@ -89,7 +92,15 @@ public class RoomManager : MonoBehaviour
 
         GameObject.Find("ScoreText").GetComponent<Text>().text = "Points: " + points.ToString();
 
-        StartCoroutine(PointIncrementOverTime());
+        if (pointIncrement)
+        {
+            StartCoroutine(PointIncrementOverTime());
+        }
+        else
+        {
+            StopCoroutine(PointIncrementOverTime());
+        }
+
 
         GameObject.Find("BarrierScoreText").GetComponent<Text>().text = "TP Points: " + maxPoints.ToString();
         GameObject.Find("TotalScore").GetComponent<Text>().text = "Total Score: " + TotalPoints.ToString();
@@ -100,7 +111,7 @@ public class RoomManager : MonoBehaviour
         points = points + spherePoints;
     }
 
-    IEnumerator PointIncrementOverTime()
+    public IEnumerator PointIncrementOverTime()
     {
         points++;
         yield return new WaitForEndOfFrame();
