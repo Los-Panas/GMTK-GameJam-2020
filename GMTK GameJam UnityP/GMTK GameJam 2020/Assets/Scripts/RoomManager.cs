@@ -29,11 +29,18 @@ public class RoomManager : MonoBehaviour
         playerPos = Player.GetComponent<Transform>();
         GameObject Teleport = GameObject.Find("Teleport");
         teleport = Teleport.GetComponent<Teleport>();
+        TotalPoints = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        var clones2 = GameObject.FindGameObjectsWithTag("Bullet");
+        if (clones2.Length > 100)
+        {
+            Destroy(clones2[0]);
+        }
+
         if (points >= maxPoints && children[actualChild] != null && teleport.inTeleport == true) //if points are 
         {
             children[actualChild].gameObject.SetActive(false);
@@ -73,18 +80,18 @@ public class RoomManager : MonoBehaviour
 
             playerPos.position = new Vector3(0, 1.5f, 0);
 
-            TotalPoints += points + maxPoints;
+            TotalPoints = TotalPoints + points;
 
             points = 0;
 
             playerController.HealthToMax();
         }
 
-        GameObject.Find("ScoreText").GetComponent<Text>().text = "Points:" + points.ToString();
+        GameObject.Find("ScoreText").GetComponent<Text>().text = "Points: " + points.ToString();
 
         StartCoroutine(PointIncrementOverTime());
 
-        GameObject.Find("BarrierScoreText").GetComponent<Text>().text = "Points for next Room: " + maxPoints.ToString();
+        GameObject.Find("BarrierScoreText").GetComponent<Text>().text = "TP Points: " + maxPoints.ToString();
         GameObject.Find("TotalScore").GetComponent<Text>().text = "Total Score: " + TotalPoints.ToString();
     }
 

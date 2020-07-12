@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
             {
@@ -26,17 +26,14 @@ public class PauseMenu : MonoBehaviour
             }
          else {
             Pause();
-        }
+         }
         }
     }
 
-   /* void Awake()
+    void Awake()
     {
-        //Continue();
-        //pauseMenuUI.SetActive(true);
-        Time.timeScale = 1f;
-        //GameIsPaused = false;
-    }*/
+        Cursor.visible = false;
+    }
     public void Continue ()
     {
         ablefire.ableToFire = true;
@@ -55,5 +52,11 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
         //Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit!");
+        Application.Quit();
     }
 }
