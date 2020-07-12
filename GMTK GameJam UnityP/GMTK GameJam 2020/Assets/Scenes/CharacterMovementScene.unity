@@ -5282,7 +5282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &544650239
@@ -5696,6 +5696,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 530302862232266681, guid: 6c61b33b75b861d4bb326fcbfe001e96,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 89ff0b56199f14748a7560cfd96785d0, type: 2}
+    - target: {fileID: 859232654696677749, guid: 6c61b33b75b861d4bb326fcbfe001e96,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 010b591e8f3a7ec4fb24b0069555b206, type: 2}
+    - target: {fileID: 1169697411786503069, guid: 6c61b33b75b861d4bb326fcbfe001e96,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3414265617559917749, guid: 6c61b33b75b861d4bb326fcbfe001e96,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5766,6 +5781,41 @@ PrefabInstance:
       propertyPath: maxPoints
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 4203734619103004959, guid: 6c61b33b75b861d4bb326fcbfe001e96,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c65cb4877613cdc42bac2be1842141fd, type: 2}
+    - target: {fileID: 4487512850838120780, guid: 6c61b33b75b861d4bb326fcbfe001e96,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963295446297224272, guid: 6c61b33b75b861d4bb326fcbfe001e96,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190326730206969207, guid: 6c61b33b75b861d4bb326fcbfe001e96,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6249417950404430068, guid: 6c61b33b75b861d4bb326fcbfe001e96,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7436636542413879617, guid: 6c61b33b75b861d4bb326fcbfe001e96,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2ad4e3a7b65dc274e87d515e92616013, type: 2}
+    - target: {fileID: 7670108268857639717, guid: 6c61b33b75b861d4bb326fcbfe001e96,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dcdc3ab6ad764414dacbc6201be18ecd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c61b33b75b861d4bb326fcbfe001e96, type: 3}
 --- !u!54 &1336636880
@@ -6210,14 +6260,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a6e62e2ac8ea14f8d9f14f8441083f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 7
   bulletSpawnPoint: {fileID: 85558852}
   waitTime: 0
   bulletmesh: {fileID: 8970310509458865390, guid: dfdd491a094665e4d9ff9c684b5a1181,
     type: 3}
   timeToFire: 30
   ableToFire: 1
-  bulletSpeed: 200
+  bulletSpeed: 400
   minNumOfShots: 0
   maxNumfShots: 0
   maxHealth: 100
@@ -6226,7 +6276,7 @@ MonoBehaviour:
   invulnerability: 0
   invulnerability_time: 2
   Bulletspawn: {fileID: 85558853}
-  dashCD: 2
+  dashCD: 1
   currentDashCD: 0
   dashDuration: 0.2
   dashSpeed: 20
