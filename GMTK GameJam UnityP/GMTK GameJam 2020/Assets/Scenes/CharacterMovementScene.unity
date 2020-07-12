@@ -6233,7 +6233,9 @@ MonoBehaviour:
   healthBarHandler: {fileID: 1982187078}
   particleSys: {fileID: 85558855}
   regularMaterial: {fileID: 2100000, guid: f229fdf0cc937b045beb05f45fe78b64, type: 2}
-  invincibleMaterial: {fileID: 2100000, guid: 656965b86a8c19c49bb0c47fbf6ce4d7, type: 2}
+  lightMaterial: {fileID: 2100000, guid: 656965b86a8c19c49bb0c47fbf6ce4d7, type: 2}
+  hurtMaterial: {fileID: 2100000, guid: b11264be2eb06e04aa2289024ad57e4b, type: 2}
+  lightHurtMaterial: {fileID: 2100000, guid: 9a9fb7f4d5acde74e91d11d3f26189aa, type: 2}
 --- !u!54 &1618039835
 Rigidbody:
   m_ObjectHideFlags: 0
