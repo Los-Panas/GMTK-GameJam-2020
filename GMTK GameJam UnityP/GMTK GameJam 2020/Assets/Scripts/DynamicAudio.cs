@@ -30,16 +30,13 @@ public class DynamicAudio : MonoBehaviour
         num_sub_track = Random.Range(1, 4);
 
         FindObjectOfType<AudioManager>().Play("Soundtrack" + num_soundtrack.ToString() + "." + num_sub_track.ToString());
-        Debug.Log("Soundtrack" + num_soundtrack.ToString() + "." + num_sub_track.ToString());
     }
 
     private void Update()
     {
         if (!FindObjectOfType<AudioManager>().IsPlaying("Soundtrack" + num_soundtrack.ToString() + "." + num_sub_track.ToString()))
-        {
             NextSoundtrack();
-            Debug.Log("Soundtrack" + num_soundtrack.ToString() + "." + num_sub_track.ToString());
-        }
+        
     }
 
     void NextSoundtrack()
@@ -60,6 +57,7 @@ public class DynamicAudio : MonoBehaviour
         if (num_soundtrack == 4)
             num_sub_track = 1;
 
+        // Play track
         FindObjectOfType<AudioManager>().Play("Soundtrack" + num_soundtrack + "." + num_sub_track);
     }
 }

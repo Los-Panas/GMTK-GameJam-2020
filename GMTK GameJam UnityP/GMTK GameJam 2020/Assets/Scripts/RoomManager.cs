@@ -37,6 +37,7 @@ public class RoomManager : MonoBehaviour
             children[actualChild + 1].gameObject.SetActive(false);
             if(actualChild + 3 <= children.Length)
             {
+                FindObjectOfType<AudioManager>().Play("Nextlevel");
                 children[actualChild + 2].gameObject.SetActive(true);
                 children[actualChild + 3].gameObject.SetActive(true);
             }
