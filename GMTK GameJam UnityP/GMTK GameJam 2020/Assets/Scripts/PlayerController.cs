@@ -79,11 +79,19 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                StartCoroutine(TrailToggle());
                 dashTimer += Time.deltaTime;
                 currentDashCD = dashCD;
                 body.velocity = movement.normalized * dashSpeed;
             }
         }
+    }
+
+    IEnumerator TrailToggle()
+    {
+        GetComponent<TrailRenderer>().enabled = true;
+        yield return new WaitForSeconds(dashDuration);
+        GetComponent<TrailRenderer>().enabled = false;
     }
 
     void RotationInput()
