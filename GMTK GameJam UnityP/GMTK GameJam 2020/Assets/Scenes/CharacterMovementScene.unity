@@ -6214,6 +6214,8 @@ MonoBehaviour:
   dashTimer: 0
   healthBarHandler: {fileID: 1982187078}
   particleSys: {fileID: 85558855}
+  regularMaterial: {fileID: 2100000, guid: f229fdf0cc937b045beb05f45fe78b64, type: 2}
+  invincibleMaterial: {fileID: 2100000, guid: 656965b86a8c19c49bb0c47fbf6ce4d7, type: 2}
 --- !u!54 &1618039835
 Rigidbody:
   m_ObjectHideFlags: 0
