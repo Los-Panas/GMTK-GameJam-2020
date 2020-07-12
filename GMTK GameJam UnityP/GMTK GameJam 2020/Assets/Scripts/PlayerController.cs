@@ -51,11 +51,11 @@ public class PlayerController : MonoBehaviour
         GameObject Walls = GameObject.Find("Walls");
         rmAddPoints = Walls.GetComponent<RoomManager>();
 
-        GameObject Star002 = GameObject.Find("Star002");
-        star002 = Star002.GetComponent<RandomPointOnMesh>();
+        //GameObject Star002 = GameObject.Find("Star002");
+        //star002 = Star002.GetComponent<RandomPointOnMesh>();
 
-        GameObject Rectangle002 = Walls.transform.Find("Rectangle001").gameObject.transform.Find("Rectangle002").gameObject;
-        rectangle002 = Rectangle002.GetComponent<RandomPointOnMesh>();
+        //GameObject Rectangle002 = Walls.transform.Find("Rectangle001").gameObject.transform.Find("Rectangle002").gameObject;
+        //rectangle002 = Rectangle002.GetComponent<RandomPointOnMesh>();
 
         //GameObject Rectangle0021 = Walls.transform.Find("Rectangle001 (1)").gameObject.transform.Find("Rectangle002").gameObject;
         //rectangle0021 = Rectangle0021.GetComponent<RandomPointOnMesh>();
