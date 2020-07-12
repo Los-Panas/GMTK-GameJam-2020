@@ -180,6 +180,8 @@ public class PlayerController : MonoBehaviour
 
             rmAddPoints.AddPoints();
 
+            //TODO: UI WORLD (+ ROOMMANAGER.SPHEREPOINTS)
+
             if (star002.gameObject.activeInHierarchy == true)
             {
                 star002.bangGetPoint = true;
