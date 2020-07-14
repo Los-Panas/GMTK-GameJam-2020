@@ -300,6 +300,8 @@ public class PlayerController : MonoBehaviour
         if(currentHealth <= 0) 
         {
             FindObjectOfType<AudioManager>().Play("Restart");
+            PlayerPrefs.SetInt("FinalScore", GameObject.Find("Walls").GetComponent<RoomManager>().TotalPoints);
+            PlayerPrefs.Save();
             SceneManager.LoadScene("VictoryScreen");
             //Scene curr_scene = SceneManager.GetActiveScene();
             //SceneManager.LoadScene(curr_scene.name); // I dont know if we need to save some values or not but if we needed to we should store them somewhere before the reload.
