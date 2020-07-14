@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CharacterMovementScene.unity
     guid: d3ce80fa0330a93448a75ebf72a9f763
+  - enabled: 1
+    path: Assets/Scenes/VictoryScreen.unity
+    guid: 7b0e70da7d63b9842a8df59d840b3fee
   m_configObjects: {}
