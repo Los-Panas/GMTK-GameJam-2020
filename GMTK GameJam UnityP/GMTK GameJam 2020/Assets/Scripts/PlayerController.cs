@@ -101,7 +101,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(movement.normalized * movementSpeed * Time.deltaTime, Space.World);
+        body.AddForce(movement.normalized * movementSpeed);
+        //transform.Translate(movement.normalized * movementSpeed * Time.deltaTime, Space.World);
         ImprovedDashFunc();
     }
 
