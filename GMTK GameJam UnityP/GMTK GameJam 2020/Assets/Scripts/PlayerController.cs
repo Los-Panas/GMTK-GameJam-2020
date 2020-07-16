@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(TrailToggle());
                 dashTimer += Time.deltaTime;
                 currentDashCD = dashCD;
-                body.velocity = movement.normalized * dashSpeed;
+                body.AddForce(movement.normalized * dashSpeed);
             }
         }
     }
