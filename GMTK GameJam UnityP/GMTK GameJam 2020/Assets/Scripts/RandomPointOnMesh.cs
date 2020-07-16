@@ -44,7 +44,7 @@ public class RandomPointOnMesh : MonoBehaviour
 
             //UGLIEST CODE ALIVE -- PROTECT YOUR EYES
             sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            sphere.transform.position = randomPoint;
+            sphere.transform.position = new Vector3(randomPoint.x, 1f, randomPoint.z);
             //sphere.GetComponent<Renderer>().material.color = new Color(0, 1, 0, 1);
             sphere.tag = "PickUp";
             WallRotate wrScript = sphere.AddComponent<WallRotate>();
@@ -122,7 +122,7 @@ public class RandomPointOnMesh : MonoBehaviour
         float y = pointOnMesh.y;
         float z = pointOnMesh.z;
         pointOnMesh.x = x;
-        pointOnMesh.y = 0.5f;
+        pointOnMesh.y = 4.0f;
         pointOnMesh.z = y;
 
         return pointOnMesh;

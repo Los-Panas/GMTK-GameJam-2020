@@ -65,19 +65,19 @@ public class PlayerController : MonoBehaviour
         GameObject Walls = GameObject.Find("Walls");
         rmAddPoints = Walls.GetComponent<RoomManager>();
 
-        GameObject Star002 = GameObject.Find("Star002");
+        GameObject Star002 = GameObject.Find("Circle_Space001");
         star002 = Star002.GetComponent<RandomPointOnMesh>();
 
-        GameObject Rectangle002 = Walls.transform.Find("Rectangle001").gameObject.transform.Find("Rectangle002").gameObject;
+        GameObject Rectangle002 = Walls.transform.Find("Rectangle001").gameObject.transform.Find("Circle_Space002").gameObject;
         rectangle002 = Rectangle002.GetComponent<RandomPointOnMesh>();
 
-        GameObject Pentagon002 = Walls.transform.Find("Pentagon001").gameObject.transform.Find("Pentagon002").gameObject;
+        GameObject Pentagon002 = Walls.transform.Find("Pentagon001").gameObject.transform.Find("Circle_Space003").gameObject;
         pentagon002 = Pentagon002.GetComponent<RandomPointOnMesh>();
 
-        GameObject Hexagon002 = Walls.transform.Find("Hexagon001").gameObject.transform.Find("Hexagon002").gameObject;
+        GameObject Hexagon002 = Walls.transform.Find("Hexagon001").gameObject.transform.Find("Circle_Space004").gameObject;
         hexagon002 = Hexagon002.GetComponent<RandomPointOnMesh>();
 
-        GameObject Heptagon002 = Walls.transform.Find("Heptagon001").gameObject.transform.Find("Heptagon002").gameObject;
+        GameObject Heptagon002 = Walls.transform.Find("Heptagon001").gameObject.transform.Find("Circle_Space005").gameObject;
         heptagon002 = Heptagon002.GetComponent<RandomPointOnMesh>();
 
         healthBarHandler.SetMaxHealth(maxHealth);
