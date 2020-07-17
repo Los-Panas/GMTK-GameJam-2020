@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviour
 {
-    int actualChild = 1;
+    int actualChild = 0;
     Transform[] children;
     public int points;
     Transform playerPos;
@@ -25,7 +25,7 @@ public class RoomManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        children = GetComponentsInChildren<Transform>(true);
+        //children = GetComponentsInChildren<Transform>(true);
         points = 0;
         GameObject Player = GameObject.Find("Player");
         playerPos = Player.GetComponent<Transform>();
@@ -33,6 +33,13 @@ public class RoomManager : MonoBehaviour
         teleport = Teleport.GetComponent<Teleport>();
         TotalPoints = 0;
         pointIncrement = true;
+
+        children = new Transform[gameObject.transform.childCount];
+        for (int ID = 0; ID< gameObject.transform.childCount; ID++)
+        {
+            children[ID] = gameObject.transform.GetChild(ID);
+            Debug.Log(ID);
+        }
     }
 
     // Update is called once per frame
@@ -46,24 +53,22 @@ public class RoomManager : MonoBehaviour
             
         if (points >= maxPoints && children[actualChild] != null && teleport.inTeleport == true) //if points are 
         {
-            children[actualChild].gameObject.SetActive(false);
-            children[actualChild + 1].gameObject.SetActive(false);
-            children[actualChild + 1].GetComponent<RandomPointOnMesh>().callOnce = false;
+           
+            children[actualChild].gameObject.SetActive(false);            
+            children[actualChild].GetChild(0).GetComponent<RandomPointOnMesh>().callOnce = false;
 
-            if (actualChild + 3 <= children.Length)
+            if (actualChild + 1 <= children.Length)
             {
                 FindObjectOfType<AudioManager>().Play("Nextlevel");
-                children[actualChild + 2].gameObject.SetActive(true);
-                children[actualChild + 3].gameObject.SetActive(true);
-                children[actualChild + 3].GetComponent<RandomPointOnMesh>().callOnce = false;
-                actualChild = actualChild + 2;
+                children[actualChild + 1].gameObject.SetActive(true);
+                children[actualChild].GetChild(0).GetComponent<RandomPointOnMesh>().callOnce = false;
+                actualChild = actualChild + 1;
             }
             else
             {
-                actualChild = 1;
+                actualChild = 0;
                 children[actualChild].gameObject.SetActive(true);
-                children[actualChild + 1].gameObject.SetActive(true);
-                children[actualChild + 1].GetComponent<RandomPointOnMesh>().callOnce = false;
+                children[actualChild].GetChild(0).GetComponent<RandomPointOnMesh>().callOnce = false;
             }
 
             
