@@ -80,7 +80,9 @@ public class PlayerController : MonoBehaviour
         GameObject Heptagon002 = Walls.transform.Find("Heptagon001").gameObject.transform.Find("Circle_Space005").gameObject;
         heptagon002 = Heptagon002.GetComponent<RandomPointOnMesh>();
 
-        healthBarHandler.SetMaxHealth(maxHealth);
+        if(healthBarHandler)
+            healthBarHandler.SetMaxHealth(maxHealth);
+
         currentHealth = maxHealth;
     }
 
@@ -89,7 +91,8 @@ public class PlayerController : MonoBehaviour
         GetMoveInput();
         RotationInput();
         Shoot();
-        healthBarHandler.SetHealth(currentHealth);
+        if (healthBarHandler)
+            healthBarHandler.SetHealth(currentHealth);
     }
 
     void GetMoveInput()

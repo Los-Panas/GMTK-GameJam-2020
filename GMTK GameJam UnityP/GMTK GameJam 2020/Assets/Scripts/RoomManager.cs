@@ -38,7 +38,6 @@ public class RoomManager : MonoBehaviour
         for (int ID = 0; ID< gameObject.transform.childCount; ID++)
         {
             children[ID] = gameObject.transform.GetChild(ID);
-            Debug.Log(ID);
         }
     }
 
@@ -95,7 +94,8 @@ public class RoomManager : MonoBehaviour
             playerController.HealthToMax();
         }
 
-        GameObject.Find("ScoreText").GetComponent<Text>().text = "Coins: " + points.ToString();
+        if(GameObject.Find("ScoreText"))
+            GameObject.Find("ScoreText").GetComponent<Text>().text = "Coins: " + points.ToString();
 
         if (pointIncrement)
         {
@@ -106,9 +106,10 @@ public class RoomManager : MonoBehaviour
             StopCoroutine(PointIncrementOverTime());
         }
 
-
-        GameObject.Find("BarrierScoreText").GetComponent<Text>().text = "Coins for next teleporter: " + maxPoints.ToString();
-        GameObject.Find("TotalScore").GetComponent<Text>().text = "Total coins: " + TotalPoints.ToString();
+        if(GameObject.Find("BarrierScoreText"))
+            GameObject.Find("BarrierScoreText").GetComponent<Text>().text = "Coins for next teleporter: " + maxPoints.ToString();
+        if (GameObject.Find("TotalScore"))
+            GameObject.Find("TotalScore").GetComponent<Text>().text = "Total coins: " + TotalPoints.ToString();
     }
 
     public void AddPoints()
